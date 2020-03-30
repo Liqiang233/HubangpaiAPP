@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.home.PersonalinfoActivity">
+
+
+
+
+    <LinearLayout
+        android:id="@+id/liqiang"
+        android:layout_width="412dp"
+        android:layout_height="487dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="103dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/pslinfo_button_photo"
+                android:layout_width="200dp"
+                android:layout_height="105dp"
+                android:gravity="center"
+                android:text="头像"
+                android:textColor="#000"
+                android:textSize="50dp" />
+
+            <TextView
+                android:id="@+id/pslinfo_textview_photo"
+                android:layout_width="217dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="展示头像"
+                android:gravity="center"
+                android:textColor="#000"
+                android:textSize="40dp" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/pslinfo_button_name"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:text="昵称" />
+
+        <Button
+            android:id="@+id/pslinfo_button_signature"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:text="个性签名" />
+
+        <Button
+            android:id="@+id/pslinfo_button_address"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="收货地址" />
+
+        <Button
+            android:id="@+id/pslinfo_button_verified"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:text="实名认证" />
+
+
+    </LinearLayout>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

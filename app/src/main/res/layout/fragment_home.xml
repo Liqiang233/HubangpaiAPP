@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/image01"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_gravity="center"
+            android:scaleType="fitXY"
+            android:src="@mipmap/lq"
+            android:layout_marginTop="150dp"/>
+
+        <EditText
+                android:layout_gravity="center_horizontal"
+                android:id="@+id/my_signature"
+                android:layout_width="300dp"
+                android:layout_height="35dp"
+                android:gravity="center"
+                android:hint="设置个性签名"
+                android:background="@drawable/bg_my_signature"
+                android:layout_marginTop="10dp"
+                />
+
+        <Button
+            android:id="@+id/my_wallet"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="钱 包"
+            android:textSize="17sp"
+            android:layout_marginTop="10dp"
+            />
+
+        <Button
+            android:id="@+id/my_tasklist"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="我 的 任 务"
+            android:textSize="17sp"
+            android:layout_marginTop="10dp"
+            />
+
+        <Button
+            android:id="@+id/my_info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="个 人 信 息"
+            android:textSize="17sp"
+            android:layout_marginTop="10dp"
+            />
+
+            <Button
+                android:id="@+id/my_settings"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="设 置"
+                android:textSize="17sp"
+                android:layout_marginTop="10dp"
+                />
+    </LinearLayout>
+
+</ScrollView>

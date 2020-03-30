@@ -1,0 +1,7 @@
+<resources>
+    <string name="actor_words">不 是 善 茬</string>
+    <string name="app_name">互帮派</string>
+    <string name="title_home">我的</string>
+    <string name="title_dashboard">任务</string>
+    <string name="title_notifications">消息</string>
+</resources>
