@@ -1,3 +1,4 @@
+
 package com.example.menudemo.ui.home;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -6,12 +7,11 @@ import android.os.Bundle;
 
 import com.example.menudemo.R;
 
-
-public class WalletActivity extends AppCompatActivity {
+public class TaskGroundActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_my_wallet);
+        setContentView(R.layout.activity_task_ground);
     }
 }

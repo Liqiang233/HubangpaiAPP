@@ -61,6 +61,7 @@
             android:layout_height="match_parent"
             android:background="@drawable/biankuang"
             android:textColor="#000"
+            android:inputType="number"
             android:textSize="30dp" />
     </LinearLayout>
 
@@ -121,6 +122,7 @@
             android:layout_weight="1"
             android:gravity="center"
             android:text="密码："
+            android:inputType="textPassword"
             android:textColor="#000"
             android:textSize="20dp" />
 

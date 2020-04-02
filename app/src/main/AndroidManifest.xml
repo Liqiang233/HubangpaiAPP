@@ -9,7 +9,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.home.Settings_SafetyActivity"></activity>
+        <activity android:name=".ui.home.TaskGroundActivity"></activity>
+        <activity android:name=".ui.home.LoginActivity" />
+        <activity android:name=".ui.home.LoginActivity2" />
+        <activity
+            android:name=".ui.login.LoginActivity"
+            android:label="@string/title_activity_login" />
+        <activity android:name=".ui.home.Settings_SafetyActivity" />
         <activity android:name=".ui.home.Settings_PayActivity" />
         <activity android:name=".ui.home.Settings_CommonActivity" />
         <activity android:name=".ui.home.TasklistActivity" />
@@ -27,5 +33,7 @@
             </intent-filter>
         </activity>
     </application>
+
+    <uses-permission android:name="android.permission.INTERNET" />
 
 </manifest>
