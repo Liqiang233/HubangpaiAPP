@@ -2,6 +2,9 @@ package com.example.menudemo.ui.task;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -31,5 +34,31 @@ public class TaskFragment extends Fragment {
             }
         });
         return root;
+    }
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);//Make sure you have this line of code.
+
+    }
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        // TODO Add your menu entries here
+        super.onCreateOptionsMenu(menu, inflater);
+        inflater.inflate(R.menu.top_task_menu,menu);
+
+    }
+
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.task_add_item:
+                return true;
+            case R.id.option_normal_2:
+                return true;
+            case R.id.option_normal_3:
+                return true;
+            case R.id.option_normal_4:
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 }
