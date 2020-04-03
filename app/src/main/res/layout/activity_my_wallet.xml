@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+<LinearLayout
+
+    android:layout_width="match_parent"
+    android:layout_height="200dp"
+    android:paddingTop="30dp"
+    android:paddingBottom="30dp"
+    android:paddingRight="50dp"
+    android:paddingLeft="50dp"
+    android:orientation="vertical">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    android:background="#8fffad"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:gravity="center"
+        android:text="钱包"
+
+        android:textSize="20dp" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="130dp"
+            android:layout_height="match_parent"
+            android:gravity="right"
+            android:text="￥"
+            android:textSize="20dp" />
+        <TextView
+            android:layout_width="150dp"
+            android:layout_height="match_parent"
+            android:gravity="left"
+            android:text="999999"
+            android:textSize="20dp" />
+    </LinearLayout>
+</LinearLayout>
+
+</LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:paddingRight="50dp"
+        android:paddingLeft="50dp">
+        <Button
+        android:layout_width="150dp"
+        android:layout_height="match_parent"
+            android:text="提现"/>
+        <Button
+            android:layout_width="150dp"
+            android:layout_height="match_parent"
+            android:text="充值"/>
+    </LinearLayout>
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="100dp"
+    android:paddingTop="10dp"
+    android:paddingBottom="10dp"
+    android:paddingRight="50dp"
+    android:paddingLeft="50dp">
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="账单"/>
+</LinearLayout>
+</LinearLayout>
