@@ -39,7 +39,10 @@ public class TaskFragment extends Fragment {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);//Make sure you have this line of code.
 
-    } public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+
+    }
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+
         // TODO Add your menu entries here
         super.onCreateOptionsMenu(menu, inflater);
         inflater.inflate(R.menu.top_task_menu,menu);

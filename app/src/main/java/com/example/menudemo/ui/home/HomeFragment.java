@@ -19,6 +19,7 @@ import androidx.fragment.app.Fragment;
 
 import com.example.menudemo.R;
 
+
 public class HomeFragment extends Fragment {
 
 
@@ -55,7 +56,11 @@ public class HomeFragment extends Fragment {
         bt_tasklist.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 //跳转到设置页面任务页面
+
+                //跳转到我的任务页面
+
                 Intent intent = new Intent(getActivity(),TasklistActivity.class);
                 startActivity(intent);
             }
@@ -65,7 +70,11 @@ public class HomeFragment extends Fragment {
         bt_wallet.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 //跳转到设置页面任务页面
+
+                //跳转到钱包页面
+
                 Intent intent = new Intent(getActivity(),WalletActivity.class);
                 startActivity(intent);
             }

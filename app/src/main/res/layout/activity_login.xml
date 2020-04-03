@@ -19,7 +19,9 @@
         android:drawablePadding="5dp"
         android:maxLines="1"
         android:drawableLeft="@drawable/username"
+
         android:inputType="textPassword"
+
         android:hint="用户名">
     </EditText>
     <EditText
