@@ -10,6 +10,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".ui.home.LoginActivity"></activity>
+
+        <activity android:name=".ui.home.TaskGroundActivity"></activity>
+        <activity android:name=".ui.home.LoginActivity" />
+
         <activity android:name=".ui.home.Settings_SafetyActivity" />
         <activity android:name=".ui.home.Settings_PayActivity" />
         <activity android:name=".ui.home.Settings_CommonActivity" />
@@ -28,5 +32,9 @@
             </intent-filter>
         </activity>
     </application>
+
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
 
 </manifest>
