@@ -19,9 +19,6 @@
         android:drawablePadding="5dp"
         android:maxLines="1"
         android:drawableLeft="@drawable/username"
-
-        android:inputType="textPassword"
-
         android:hint="用户名">
     </EditText>
     <EditText
@@ -56,12 +53,12 @@
 
     <CheckBox
         android:id="@+id/login_check_rememberpsd"
-        android:layout_width="wrap_content"
-        android:layout_height="47dp"
+        android:layout_width="171dp"
+        android:layout_height="33dp"
         android:layout_below="@+id/login_password"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="19dp"
-        android:layout_marginEnd="267dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="225dp"
         android:text="记住密码"
         android:textSize="20dp" />
 
@@ -71,30 +68,31 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/login_password"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="27dp"
+        android:layout_marginTop="35dp"
         android:layout_marginEnd="103dp"
         android:text="自动登陆"
         android:textSize="20sp" />
-    <TextView
-        android:id="@+id/login_textview_forgetpsw"
-        android:layout_width="wrap_content"
-        android:layout_height="39dp"
+
+    <Button
+        android:id="@+id/login_button_forgetpsw"
+        android:layout_width="124dp"
+        android:layout_height="63dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="40dp"
-        android:layout_marginBottom="235dp"
+        android:layout_marginStart="31dp"
+        android:layout_marginBottom="210dp"
         android:text="忘记密码?"
         android:textColor="#8181F7"
         android:textSize="20sp" />
 
-    <TextView
-        android:id="@+id/login_textview_register"
-        android:layout_width="200dp"
-        android:layout_height="39dp"
+    <Button
+        android:id="@+id/login_button_register"
+        android:layout_width="211dp"
+        android:layout_height="70dp"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:layout_marginEnd="45dp"
-        android:layout_marginBottom="105dp"
+        android:layout_marginBottom="88dp"
         android:text="没有账户，去注册"
         android:textColor="#8181F7"
         android:textSize="20sp" />

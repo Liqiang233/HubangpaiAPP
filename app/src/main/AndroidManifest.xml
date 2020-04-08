@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.menudemo">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,11 +11,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.home.LoginActivity"></activity>
-
-        <activity android:name=".ui.home.TaskGroundActivity"></activity>
-        <activity android:name=".ui.home.LoginActivity" />
-
+        <activity android:name=".ui.home.ForgetpsdActivity"></activity>
+        <activity android:name=".MainActivity" />
+        <activity android:name=".ui.home.TaskGroundActivity" />
+        <activity android:name=".ui.home.RegisterActivity" />
         <activity android:name=".ui.home.Settings_SafetyActivity" />
         <activity android:name=".ui.home.Settings_PayActivity" />
         <activity android:name=".ui.home.Settings_CommonActivity" />
@@ -22,7 +23,7 @@
         <activity android:name=".ui.home.PersonalinfoActivity" />
         <activity android:name=".ui.home.SettingsActivity" />
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.home.LoginActivity"
             android:label="@string/app_name"
             android:windowSoftInputMode="adjustPan|stateHidden">
             <intent-filter>
@@ -32,9 +33,5 @@
             </intent-filter>
         </activity>
     </application>
-
-
-    <uses-permission android:name="android.permission.INTERNET" />
-
 
 </manifest>
