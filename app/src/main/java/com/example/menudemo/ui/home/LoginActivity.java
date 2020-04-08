@@ -42,18 +42,17 @@ public class LoginActivity extends AppCompatActivity {
     private EditText login_password;
     private Button bt_forgetpsd;
     private Button bt_register;
-    private CheckBox cb_rememberpsd;
-    private CheckBox cb_autologin;
 
     public UserInfo userInfo;
     private Context context;
     private SharedPreferences sp;
     private SharedPreferences.Editor editor;
 
-    private static final String USER_NAME = "userid";
+    private static final String USER_NAME = "id";
     private static final String PASSWORD = "password";
     private static final String ISSAVEPASS = "savepassword";
     private static final String AUTOLOGIN = "autologin";
+    private static  final String USERINFO = "userInfo";
     private String username;
     private String password;
 
@@ -63,44 +62,25 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+
         context = getApplicationContext();
-        sp = getSharedPreferences("userInfo", MODE_PRIVATE);
+        sp = getSharedPreferences(USERINFO , MODE_PRIVATE);
         editor = sp.edit();//获取编辑者
+        userInfo = new UserInfo(this);
+
+
+
 
         bt_login = findViewById(R.id.bt_login);
         login_username=findViewById(R.id.login_username);
         login_password=findViewById(R.id.login_password);
-        cb_autologin = findViewById(R.id.login_check_autologin);
-        cb_rememberpsd = findViewById(R.id.login_check_rememberpsd);
         bt_forgetpsd = findViewById(R.id.login_button_forgetpsw);
         bt_register = findViewById(R.id.login_button_register);
-        userInfo = new UserInfo(this);
-  //判断是否记住密码、自动登陆，初始默认是不记住密码(这块还不一定，正在研究)
-        if(userInfo.getBooleanInfo(ISSAVEPASS))
-        {
-            cb_rememberpsd.setChecked(true);
-            login_username.setText(userInfo.getIntInfo(USER_NAME));
-            login_password.setText(userInfo.getStringInfo(PASSWORD));
-            //判断是否自动登陆(自动登陆包含记住密码)
-            if(userInfo.getBooleanInfo(AUTOLOGIN))
-            {
-                cb_autologin.setChecked(true);
-                cb_rememberpsd.setChecked(true);
-                final Intent i = new Intent();
-                i.setClass(LoginActivity.this,MainActivity.class);
 
-                Timer timer = new Timer();
-                TimerTask tast = new TimerTask() {
-                    @Override
-                    public void run() {
-                        startActivity(i);
-                    }
-                };
-                timer.schedule(tast, 1500);
-                this.finish();
-            }
 
-        }
+
+
         //用户注册
         bt_register.setOnClickListener(new View.OnClickListener()
         {
@@ -171,17 +151,9 @@ public class LoginActivity extends AppCompatActivity {
                                             //返回成功后  判断是否勾选自动登陆和记住密码 写入文件
                                             username = login_username.getText().toString();
                                             password = login_password.getText().toString();
-                                            editor.putString("ID", username);//保存用户名
-                                            editor.commit();
-                                            if (cb_rememberpsd.isChecked()) {
-                                                editor.putString("name", username);
-                                                editor.putString("password", password);
-                                                userInfo.setUserInfo(ISSAVEPASS, true);
-                                                editor.commit();
-                                            }
-                                            if (cb_autologin.isChecked()) {
-                                                userInfo.setUserInfo(AUTOLOGIN, true);
-                                            }
+                                            userInfo.setUserInfo(USER_NAME,username);
+                                            userInfo.setUserInfo(PASSWORD, password);
+
                                             //页面跳转
                                             Intent intent = new Intent();
                                             Bundle bundle = new Bundle();

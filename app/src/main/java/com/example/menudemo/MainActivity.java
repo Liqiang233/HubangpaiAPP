@@ -36,12 +36,11 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        SharedPreferences getdataPreferences = getSharedPreferences("mydatas",
-                MODE_PRIVATE);
+        SharedPreferences getdataPreferences = getSharedPreferences("userInfo", MODE_PRIVATE);
         // 读取数据，第一个参数是键值，第二个参数是找不到对应键值时的返回值
-        String name = getdataPreferences.getString("username", null);
-        String pwd = getdataPreferences.getString("pwd", null);
-        if(!(name!=null&&pwd!=null))
+        String name = getdataPreferences.getString("id", null);
+
+        if(name==null)
         {
             Intent intent = new Intent(MainActivity.this, LoginActivity.class);
             startActivity(intent);

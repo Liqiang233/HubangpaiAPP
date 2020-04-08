@@ -2,7 +2,9 @@ package com.example.menudemo.ui.home;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -15,11 +17,24 @@ public class SettingsActivity extends AppCompatActivity {
     private Button paymentsettings;
     private Button securitycenter;
     private Button commonsettings;
+    private  Button exitaccount;
+
+    public UserInfo userInfo;
+    private SharedPreferences sp;
+    private SharedPreferences.Editor editor;
+    private Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_settings);
+
+        context = getApplicationContext();
+        sp = getSharedPreferences("userInfo" , MODE_PRIVATE);
+        editor = sp.edit();//获取编辑者
+        userInfo = new UserInfo(this);
+
+
 
         paymentsettings = findViewById(R.id.settings_button_paymentsettings);
         paymentsettings.setOnClickListener(new View.OnClickListener(){
@@ -50,5 +65,20 @@ public class SettingsActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        exitaccount = findViewById(R.id.settings_button_exit);
+        exitaccount.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                editor.clear();
+                editor.commit();
+                Intent intent = new Intent(SettingsActivity.this,LoginActivity.class);
+                startActivity(intent);
+
+            }
+        });
+
+
+
     }
 }
