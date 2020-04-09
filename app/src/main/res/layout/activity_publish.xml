@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.task.PublishActivity"
+    android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="15dp"
+        android:orientation="vertical">
+    <TextView
+        android:layout_width="120dp"
+        android:layout_height="40dp"
+        android:padding="5dp"
+        android:text="任务名："
+        android:textColor="#000"
+        android:textSize="20dp" />
+
+    <EditText
+        android:id="@+id/tv_messionname"
+        android:layout_width="300dp"
+        android:layout_height="40dp"
+        android:background="@drawable/et_username"
+        android:textColor="#000"/>
+    <TextView
+        android:layout_width="120dp"
+        android:layout_height="40dp"
+        android:padding="5dp"
+        android:text="任务类别："
+        android:textColor="#000"
+        android:textSize="20dp" />
+    <Spinner
+        android:id="@+id/sp_messionclass"
+        android:layout_width="150dp"
+        android:layout_height="40dp"
+        android:background="@drawable/et_username"
+        android:entries="@array/classes"
+        ></Spinner>
+    <TextView
+
+        android:layout_width="120dp"
+        android:layout_height="40dp"
+        android:padding="5dp"
+        android:text="任务地址："
+        android:textColor="#000"
+        android:textSize="20dp" />
+
+    <EditText
+        android:id="@+id/tv_messionaddress"
+        android:layout_width="300dp"
+        android:layout_height="40dp"
+        android:background="@drawable/et_username"
+        android:textColor="#000"/>
+    <TextView
+        android:layout_width="120dp"
+        android:layout_height="40dp"
+        android:padding="5dp"
+        android:text="截止日期："
+        android:textColor="#000"
+        android:textSize="20dp" />
+
+    <EditText
+        android:id="@+id/tv_messiondeadline"
+        android:layout_width="300dp"
+        android:layout_height="40dp"
+        android:background="@drawable/et_username"
+        android:inputType="datetime"
+        android:textColor="#000"/>
+    <TextView
+        android:layout_width="120dp"
+        android:layout_height="40dp"
+        android:padding="5dp"
+        android:text="详细描述："
+        android:textColor="#000"
+        android:textSize="20dp" />
+
+    <EditText
+        android:id="@+id/tv_messiondetails"
+        android:layout_width="300dp"
+        android:layout_height="120dp"
+        android:background="@drawable/et_username"
+        android:textColor="#000"/>
+    <TextView
+
+        android:layout_width="200dp"
+        android:layout_height="40dp"
+        android:padding="5dp"
+        android:text="报酬意向：（元）"
+        android:textColor="#000"
+        android:textSize="20dp" />
+
+    <EditText
+        android:id="@+id/tv_messionpay"
+        android:layout_width="300dp"
+        android:layout_height="40dp"
+        android:background="@drawable/et_username"
+        android:inputType="number"
+        android:textColor="#000"/>
+    <Button
+        android:id="@+id/bt_publish"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@id/login_password"
+        android:layout_marginTop="40dp"
+        android:text="发布任务"
+        android:textSize="20sp"
+        android:background="@drawable/bt_login"
+        ></Button>
+    </LinearLayout>
+</ScrollView>

@@ -2,28 +2,27 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.menudemo">
 
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.CAMERA"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".ui.task.MessionModifyActivity"></activity>
+        <activity android:name=".ui.task.MessionDetailsActivity" />
+        <activity android:name=".ui.task.PublishActivity" />
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity android:name=".ui.home.ForgetpsdActivity"></activity>
         <activity android:name=".ui.home.LoginActivity" />
+        <activity android:name=".ui.task.TaskGroundActivity" />
         <activity android:name=".ui.home.TaskGroundActivity" />
         <activity android:name=".ui.home.RegisterActivity" />
         <activity android:name=".ui.home.Settings_SafetyActivity" />
         <activity android:name=".ui.home.Settings_PayActivity" />
         <activity android:name=".ui.home.Settings_CommonActivity" />
-        <activity android:name=".ui.home.TasklistActivity" />
+        <activity android:name=".ui.task.TasklistActivity" />
         <activity android:name=".ui.home.WalletActivity" />
         <activity android:name=".ui.home.PersonalinfoActivity" />
         <activity android:name=".ui.home.SettingsActivity" />
@@ -38,5 +37,10 @@
             </intent-filter>
         </activity>
     </application>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
 
 </manifest>

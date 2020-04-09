@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="classes">
+        <item>跑腿</item>
+        <item>家政</item>
+        <item>寄养</item>
+        <item>辅导</item>
+        <item>陪护</item>
+    </string-array>
+
+    
+</resources>

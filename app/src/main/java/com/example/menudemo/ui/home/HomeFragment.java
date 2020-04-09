@@ -18,6 +18,7 @@ import androidx.fragment.app.Fragment;
 
 
 import com.example.menudemo.R;
+import com.example.menudemo.ui.task.TasklistActivity;
 
 
 public class HomeFragment extends Fragment {
@@ -61,7 +62,7 @@ public class HomeFragment extends Fragment {
 
                 //跳转到我的任务页面
 
-                Intent intent = new Intent(getActivity(),TasklistActivity.class);
+                Intent intent = new Intent(getActivity(), TasklistActivity.class);
                 startActivity(intent);
             }
         });
