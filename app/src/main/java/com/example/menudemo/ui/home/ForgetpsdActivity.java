@@ -11,6 +11,6 @@ public class ForgetpsdActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_forgetpsd);
+        setContentView(R.layout.activity_account_forgetpsd);
     }
 }

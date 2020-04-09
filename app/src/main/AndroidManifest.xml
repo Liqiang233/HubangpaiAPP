@@ -15,7 +15,6 @@
         <activity android:name=".ui.task.PublishActivity" />
         <activity android:name=".ui.home.ForgetpsdActivity"></activity>
         <activity android:name=".ui.home.LoginActivity" />
-        <activity android:name=".ui.task.TaskGroundActivity" />
         <activity android:name=".ui.home.RegisterActivity" />
         <activity android:name=".ui.home.Settings_SafetyActivity" />
         <activity android:name=".ui.home.Settings_PayActivity" />

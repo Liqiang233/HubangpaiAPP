@@ -12,9 +12,7 @@ import android.os.Message;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.menudemo.MainActivity;
@@ -26,8 +24,6 @@ import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Timer;
-import java.util.TimerTask;
 /*
    * @author  Yapi
    * @note  登陆界面的逻辑设计
@@ -61,15 +57,13 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.activity_account_login);
 
 
         context = getApplicationContext();
         sp = getSharedPreferences(USERINFO , MODE_PRIVATE);
         editor = sp.edit();//获取编辑者
         userInfo = new UserInfo(this);
-
-
 
 
         bt_login = findViewById(R.id.bt_login);
@@ -126,14 +120,14 @@ public class LoginActivity extends AppCompatActivity {
                             Log.i("===========", result.toString());
                             Message msg = new Message();
                             msg.what = 0x12;
-                            Bundle data = new Bundle();
+                            Bundle data = new Bundle();   //bundle 主要用于传递数据，以键值对的形势存在
                             data.putString("result", result);
                             Log.i("*********************", result.toString());
                             msg.setData(data);
                             hander.sendMessage(msg);
                         }
 
-                        @SuppressLint("HandlerLeak")
+                        @SuppressLint("HandlerLeak")    //Handler用于管理线程或者进程的消息队列
                         Handler hander = new Handler() {
                             @Override
                             public void handleMessage(Message msg) {
@@ -148,16 +142,15 @@ public class LoginActivity extends AppCompatActivity {
                                         String result = (String) json.get("result");
                                         if ("success".equals(result)) {
 
-                                            //返回成功后  判断是否勾选自动登陆和记住密码 写入文件
+                                            //返回成功后  将登陆的用户名保存在SharedPreferences中
+                                            //SharedPreferences:轻量级的存储类，以键值对的形式存在
                                             username = login_username.getText().toString();
                                             password = login_password.getText().toString();
                                             editor.putString("id",username);
                                             editor.commit();
                                             /*userInfo.setUserInfo(USER_NAME,username);
                                             userInfo.setUserInfo(PASSWORD, password);
-
                                              */
-
                                             //页面跳转
                                             Intent intent = new Intent();
                                             Bundle bundle = new Bundle();

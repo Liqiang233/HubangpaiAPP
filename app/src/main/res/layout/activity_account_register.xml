@@ -4,12 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.home.ForgetpsdActivity">
-
-
+    android:title = "注册"
+    tools:context=".ui.home.RegisterActivity">
     <LinearLayout
         android:id="@+id/linearLayout7"
-        android:layout_width="404dp"
+        android:layout_width="380dp"
         android:layout_height="75dp"
         android:layout_marginBottom="300dp"
         android:background="@drawable/et_username"
@@ -29,7 +28,7 @@
             android:textSize="20dp" />
 
         <EditText
-            android:id="@+id/forgetpsd_edittext_num"
+            android:id="@+id/register_edittext_num"
             android:layout_width="300dp"
             android:layout_height="match_parent"
             android:background="@drawable/et_username"
@@ -39,7 +38,7 @@
 
     <LinearLayout
         android:id="@+id/linearLayout5"
-        android:layout_width="404dp"
+        android:layout_width="380dp"
         android:layout_height="75dp"
         android:background="@drawable/et_username"
         android:orientation="horizontal"
@@ -53,7 +52,7 @@
         tools:layout_editor_absoluteY="225dp">
 
         <EditText
-            android:id="@+id/forgetpsd_edittext_vrfcode"
+            android:id="@+id/register_edittext_vrfcode"
             android:layout_width="300dp"
             android:layout_height="match_parent"
             android:layout_weight="7"
@@ -62,7 +61,7 @@
             android:textSize="30dp" />
 
         <Button
-            android:id="@+id/forgetpsd_button_getcode"
+            android:id="@+id/register_button_getcode"
             android:layout_width="140dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -76,7 +75,7 @@
 
     <LinearLayout
         android:id="@+id/linearLayout6"
-        android:layout_width="404dp"
+        android:layout_width="380dp"
         android:layout_height="75dp"
         android:layout_marginTop="75dp"
         android:background="@drawable/et_username"
@@ -98,7 +97,7 @@
             android:textSize="20dp" />
 
         <EditText
-            android:id="@+id/forgetpsd_edittext_psw"
+            android:id="@+id/register_edittext_psw"
             android:layout_width="300dp"
             android:layout_height="match_parent"
             android:layout_weight="7"
@@ -112,9 +111,8 @@
 
     <LinearLayout
         android:id="@+id/linearLayout4"
-        android:layout_width="404dp"
+        android:layout_width="380dp"
         android:layout_height="75dp"
-        android:layout_marginBottom="67dp"
         android:background="@drawable/et_username"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
@@ -132,7 +130,7 @@
             android:textSize="20dp" />
 
         <EditText
-            android:id="@+id/forgetpsd_edittext_psw2"
+            android:id="@+id/register_edittext_psw2"
             android:layout_width="300dp"
             android:layout_height="match_parent"
             android:layout_weight="7"
@@ -145,17 +143,18 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/forgetpsd_button_findpsd"
+        android:id="@+id/register_button_register"
         android:layout_width="197dp"
         android:layout_height="74dp"
         android:gravity="center"
-        android:text="找回密码"
-        android:textSize="30dp"
+        android:text="注册"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.542"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout4"
         app:layout_constraintVertical_bias="0.296" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

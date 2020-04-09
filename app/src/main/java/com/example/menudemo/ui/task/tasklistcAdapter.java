@@ -32,7 +32,7 @@ public class tasklistcAdapter extends RecyclerView.Adapter<tasklistcAdapter.task
 
     @Override
     public void onBindViewHolder(@NonNull taskviewHolder holder, int position) {
-                holder.textView.setText("帮忙打扫家务");
+                holder.textView.setText("空");
                 holder.textView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
