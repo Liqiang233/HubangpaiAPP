@@ -1,5 +1,6 @@
 package com.example.menudemo.ui.task;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -11,28 +12,36 @@ import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.menudemo.R;
 
-public class TaskFragment extends Fragment {
+import java.util.List;
 
-    private TaskViewModel dashboardViewModel;
 
+public class TaskFragment extends Fragment{
+
+    private View view;
+    private RecyclerView recy;
+    private List<String> list;
+
+    String []arr={"帮忙买辣条","帮养宠物","辅导孩子写作业","陪护老人两天","帮忙买辣条","帮忙打扫家务","帮养宠物","辅导孩子写作业","陪护老人两天","帮忙买辣条","帮忙打扫家务","帮养宠物","辅导孩子写作业","陪护老人两天"};
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        dashboardViewModel =
-                ViewModelProviders.of(this).get(TaskViewModel.class);
+
         View root = inflater.inflate(R.layout.fragment_task, container, false);
-        final TextView textView = root.findViewById(R.id.text_dashboard);
-        dashboardViewModel.getText().observe(this, new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
-                textView.setText(s);
-            }
-        });
+
+
+        recy=root.findViewById(R.id.task_rec);
+        recy.setLayoutManager(new LinearLayoutManager(this.getActivity()));
+        recy.setAdapter(new tasklistcAdapter(this.getActivity(),arr ));
+
+
         return root;
     }
     public void onCreate(Bundle savedInstanceState) {
@@ -52,6 +61,8 @@ public class TaskFragment extends Fragment {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
             case R.id.task_add_item:
+                Intent intent = new Intent(getActivity(),PublishActivity.class);
+                startActivity(intent);
                 return true;
             case R.id.option_normal_2:
                 return true;
@@ -63,4 +74,6 @@ public class TaskFragment extends Fragment {
                 return super.onOptionsItemSelected(item);
         }
     }
+
+
 }
