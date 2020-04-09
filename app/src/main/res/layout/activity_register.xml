@@ -6,46 +6,17 @@
     android:layout_height="match_parent"
     android:title = "注册"
     tools:context=".ui.home.RegisterActivity">
-
-
-    <Button
-        android:id="@+id/register_button_return"
-        android:layout_width="110dp"
-        android:layout_height="60dp"
-        android:layout_marginStart="16dp"
-        android:text="返回"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.01" />
-
-    <Button
-        android:id="@+id/register_button_reg"
-        android:layout_width="122dp"
-        android:layout_height="63dp"
-        android:gravity="center"
-        android:text="注册"
-        android:textSize="30dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.773" />
-
     <LinearLayout
         android:id="@+id/linearLayout7"
-        android:layout_width="407dp"
+        android:layout_width="404dp"
         android:layout_height="75dp"
-        android:layout_marginTop="83dp"
+        android:layout_marginBottom="300dp"
         android:background="@drawable/biankuang"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout5"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/register_button_return">
+        app:layout_constraintTop_toTopOf="parent">
 
         <TextView
             android:id="@+id/textView3"
@@ -61,7 +32,7 @@
             android:layout_width="300dp"
             android:layout_height="match_parent"
             android:background="@drawable/biankuang"
-            android:textColor="#000"/>
+            android:textColor="#000" />
 
     </LinearLayout>
 
@@ -142,10 +113,8 @@
         android:id="@+id/linearLayout4"
         android:layout_width="407dp"
         android:layout_height="75dp"
-        android:layout_marginBottom="67dp"
         android:background="@drawable/biankuang"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/register_button_reg"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout6">
@@ -172,6 +141,20 @@
 
 
     </LinearLayout>
+
+    <Button
+        android:id="@+id/register_button_register"
+        android:layout_width="197dp"
+        android:layout_height="74dp"
+        android:gravity="center"
+        android:text="注册"
+        android:textSize="30dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.542"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout4"
+        app:layout_constraintVertical_bias="0.296" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
