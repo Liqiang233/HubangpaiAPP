@@ -12,7 +12,7 @@
         android:layout_width="404dp"
         android:layout_height="75dp"
         android:layout_marginBottom="300dp"
-        android:background="@drawable/biankuang"
+        android:background="@drawable/et_username"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -32,16 +32,16 @@
             android:id="@+id/forgetpsd_edittext_num"
             android:layout_width="300dp"
             android:layout_height="match_parent"
-            android:background="@drawable/biankuang"
+            android:background="@drawable/et_username"
             android:textColor="#000" />
 
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/linearLayout5"
-        android:layout_width="400dp"
+        android:layout_width="404dp"
         android:layout_height="75dp"
-        android:background="@drawable/biankuang"
+        android:background="@drawable/et_username"
         android:orientation="horizontal"
 
 
@@ -57,7 +57,7 @@
             android:layout_width="300dp"
             android:layout_height="match_parent"
             android:layout_weight="7"
-            android:background="@drawable/biankuang"
+            android:background="@drawable/et_username"
             android:textColor="#000"
             android:textSize="30dp" />
 
@@ -76,10 +76,10 @@
 
     <LinearLayout
         android:id="@+id/linearLayout6"
-        android:layout_width="407dp"
+        android:layout_width="404dp"
         android:layout_height="75dp"
         android:layout_marginTop="75dp"
-        android:background="@drawable/biankuang"
+        android:background="@drawable/et_username"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -102,7 +102,7 @@
             android:layout_width="300dp"
             android:layout_height="match_parent"
             android:layout_weight="7"
-            android:background="@drawable/biankuang"
+            android:background="@drawable/et_username"
             android:inputType="textPassword"
             android:textColor="#000"
             android:textSize="30dp" />
@@ -112,10 +112,10 @@
 
     <LinearLayout
         android:id="@+id/linearLayout4"
-        android:layout_width="407dp"
+        android:layout_width="404dp"
         android:layout_height="75dp"
         android:layout_marginBottom="67dp"
-        android:background="@drawable/biankuang"
+        android:background="@drawable/et_username"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -136,7 +136,7 @@
             android:layout_width="300dp"
             android:layout_height="match_parent"
             android:layout_weight="7"
-            android:background="@drawable/biankuang"
+            android:background="@drawable/et_username"
             android:inputType="textPassword"
             android:textColor="#000"
             android:textSize="30dp" />
