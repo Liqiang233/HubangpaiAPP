@@ -151,8 +151,12 @@ public class LoginActivity extends AppCompatActivity {
                                             //返回成功后  判断是否勾选自动登陆和记住密码 写入文件
                                             username = login_username.getText().toString();
                                             password = login_password.getText().toString();
-                                            userInfo.setUserInfo(USER_NAME,username);
+                                            editor.putString("id",username);
+                                            editor.commit();
+                                            /*userInfo.setUserInfo(USER_NAME,username);
                                             userInfo.setUserInfo(PASSWORD, password);
+
+                                             */
 
                                             //页面跳转
                                             Intent intent = new Intent();
