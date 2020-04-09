@@ -15,7 +15,7 @@
             android:layout_gravity="center"
             android:scaleType="fitXY"
             android:src="@mipmap/lq"
-            android:layout_marginTop="150dp"/>
+            android:layout_marginTop="100dp"/>
 
         <EditText
                 android:layout_gravity="center_horizontal"

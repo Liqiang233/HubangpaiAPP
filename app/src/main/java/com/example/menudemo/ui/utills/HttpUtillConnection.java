@@ -21,7 +21,7 @@ import java.util.Map;
  */
 public class HttpUtillConnection {
 
- public static String BASE_URL = "http://192.168.1.3:8080/hubangpai/LoginUser";
+ public static String BASE_URL = "http://192.168.2.143:8080/hubangpai/LoginUser";
     /*
      * urlStr:网址
      * parms：提交数据
@@ -30,14 +30,16 @@ public class HttpUtillConnection {
     public static  String getContextByHttp(String urlStr,Map<String,String> parms){
         StringBuilder sb = new StringBuilder();
         try{
+            // 建立连接
             URL url = new URL(urlStr);
             HttpURLConnection connection = (HttpURLConnection)url.openConnection();
-            connection.setRequestMethod("POST");
-            connection.setReadTimeout(5000);
-            connection.setConnectTimeout(5000);
-            connection.setDoInput(true);
-            connection.setDoOutput(true);
-            connection.setInstanceFollowRedirects(true);
+            // //设置连接属性
+            connection.setRequestMethod("POST");// 设置URL请求方法
+            connection.setReadTimeout(5000);//传递数据的超时时间
+            connection.setConnectTimeout(5000);//建立连接的超时时间
+            connection.setDoInput(true);// 使用 URL 连接进行输入
+            connection.setDoOutput(true);// 使用 URL 连接进行输出
+            connection.setInstanceFollowRedirects(true);//设置本次连接是否自动处理重定向，设置成true，系统自动处理重定向；设置成false，则需要自己从http reply中分析新的url自己重新连接。
 
             OutputStream outputStream = connection.getOutputStream();
             BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(outputStream,"UTF-8"));
