@@ -65,7 +65,7 @@ public class SettingsActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
+        //注销
         exitaccount = findViewById(R.id.settings_button_exit);
         exitaccount.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,7 +73,9 @@ public class SettingsActivity extends AppCompatActivity {
                 editor.clear();
                 editor.commit();
                 Intent intent = new Intent(SettingsActivity.this,LoginActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
+                finish();
 
             }
         });

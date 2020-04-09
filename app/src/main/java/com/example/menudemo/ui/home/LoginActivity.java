@@ -75,7 +75,7 @@ public class LoginActivity extends AppCompatActivity {
         bt_login = findViewById(R.id.bt_login);
         login_username=findViewById(R.id.login_username);
         login_password=findViewById(R.id.login_password);
-        bt_forgetpsd = findViewById(R.id.login_button_forgetpsw);
+
         bt_register = findViewById(R.id.login_button_register);
 
 
@@ -92,15 +92,7 @@ public class LoginActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        //忘记密码
-        bt_forgetpsd.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //跳转到忘记密码界面
-                 Intent intent = new Intent(LoginActivity.this,ForgetpsdActivity.class);
-                 startActivity(intent);
-            }
-        });
+
         //登陆按钮  操作
         bt_login.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -184,10 +176,10 @@ public class LoginActivity extends AppCompatActivity {
     }
        /*
        @author  TendaG
-       SharedPreferences getdataPreferences = getSharedPreferences("mydata",
+       SharedPreferences getdataPreferences = getSharedPreferences("login",
                 MODE_PRIVATE);
         // 读取数据，第一个参数是键值，第二个参数是找不到对应键值时的返回值
-        String getdata = getdataPreferences.getString("username", null);
+        String getdata = getdataPreferences.getString("name", null);
         // 将读取到的值显示到TextView上
         login_username.setText(getdata);
 
@@ -199,9 +191,9 @@ public class LoginActivity extends AppCompatActivity {
                 String data2 = login_password.getText().toString();
                 // 1、获取一个SharedPreferences.Editor对象
                 SharedPreferences.Editor spEditor = getSharedPreferences(
-                        "mydatas", MODE_PRIVATE).edit();
+                        "login", MODE_PRIVATE).edit();
                 // 2、向SharedPreferences.Editor对象中添加数据
-                spEditor.putString("username", data);
+                spEditor.putString("name", data);
                 spEditor.putString("pwd", data2);
                 // 3、将添加的数据提交
                 spEditor.commit();
