@@ -22,6 +22,7 @@ import java.util.Map;
 public class HttpUtillConnection {
 
  public static String BASE_URL = "http://192.168.13.100:8080/hubangpai/LoginUser";
+ public static String BASE_URL_Task="http://192.168.13.100:8080/hubangpai/PublishTask";
     /*
      * urlStr:网址
      * parms：提交数据
