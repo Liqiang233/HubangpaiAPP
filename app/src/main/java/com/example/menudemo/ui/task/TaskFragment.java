@@ -29,14 +29,13 @@ public class TaskFragment extends Fragment{
     private View view;
     private RecyclerView recy;
     private List<String> list;
-
     String []arr={"帮忙买辣条","帮养宠物","辅导孩子写作业","陪护老人两天","帮忙买辣条","帮忙打扫家务","帮养宠物","辅导孩子写作业","陪护老人两天","帮忙买辣条","帮忙打扫家务","帮养宠物","辅导孩子写作业","陪护老人两天"};
+
+
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
         View root = inflater.inflate(R.layout.fragment_task, container, false);
-
-
         recy=root.findViewById(R.id.task_rec);
         recy.setLayoutManager(new LinearLayoutManager(this.getActivity()));
         recy.setAdapter(new tasklistcAdapter(this.getActivity(),arr ));
@@ -44,12 +43,15 @@ public class TaskFragment extends Fragment{
 
         return root;
     }
+
+
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setHasOptionsMenu(true);//Make sure you have this line of code.
-
-
+        setHasOptionsMenu(true);//启用menu
     }
+
+
+    //展示actionbar的菜单按钮
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
 
         // TODO Add your menu entries here
@@ -57,7 +59,7 @@ public class TaskFragment extends Fragment{
         inflater.inflate(R.menu.top_task_menu,menu);
 
     }
-
+     //给菜单按钮定义点击动作
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
             case R.id.task_add_item:

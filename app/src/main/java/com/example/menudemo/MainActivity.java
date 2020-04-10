@@ -40,8 +40,9 @@ public class MainActivity extends AppCompatActivity {
                 MODE_PRIVATE);
         // 读取数据，第一个参数是键值，第二个参数是找不到对应键值时的返回值
         String name = getdataPreferences.getString("id", null);
-        String pwd = getdataPreferences.getString("password", null);
-        if(name==null||pwd==null)
+
+        //判断：如果已经登录（即sp里面id对应的key有值，则直接进入主界面），未登录进入登录界面
+        if(name==null)
         {
             Intent intent = new Intent(MainActivity.this, LoginActivity.class);
             startActivity(intent);

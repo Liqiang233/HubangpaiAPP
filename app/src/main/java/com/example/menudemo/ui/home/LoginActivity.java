@@ -69,16 +69,14 @@ public class LoginActivity extends AppCompatActivity {
         bt_login = findViewById(R.id.bt_login);
         login_username=findViewById(R.id.login_username);
         login_password=findViewById(R.id.login_password);
-
         bt_register = findViewById(R.id.login_button_register);
-
+        bt_forgetpsd = findViewById(R.id.login_button_forgetpsw);
 
 
 
         //用户注册
         bt_register.setOnClickListener(new View.OnClickListener()
         {
-
             @Override
             public void onClick(View view) {
                 //跳转到注册界面
@@ -86,7 +84,16 @@ public class LoginActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
+        //忘记密码
+        bt_forgetpsd.setOnClickListener(new View.OnClickListener()
+            {
+              @Override
+              public void onClick(View v) {
+              Intent intent = new Intent(LoginActivity.this,ForgetpsdActivity.class);
+              startActivity(intent);
+              }
+            }
+        );
         //登陆按钮  操作
         bt_login.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -101,7 +108,7 @@ public class LoginActivity extends AppCompatActivity {
                         @Override
                         public void run() {
                             //    String url = HttpUtillConnection.BASE_URL+"/servlet/LoginServlet";
-                            String url = HttpUtillConnection.BASE_URL;
+                            String url = HttpUtillConnection.Ya_URL+"LoginUser";
                             Map<String, String> params = new HashMap<String, String>();
                             String name = login_username.getText().toString();
                             String psd = login_password.getText().toString();
@@ -112,7 +119,7 @@ public class LoginActivity extends AppCompatActivity {
                             Log.i("===========", result.toString());
                             Message msg = new Message();
                             msg.what = 0x12;
-                            Bundle data = new Bundle();   //bundle 主要用于传递数据，以键值对的形势存在
+                            Bundle data = new Bundle();   //bundle 主要用于app内传递数据，以键值对的形势存在
                             data.putString("result", result);
                             Log.i("*********************", result.toString());
                             msg.setData(data);

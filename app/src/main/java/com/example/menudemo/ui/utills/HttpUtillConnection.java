@@ -22,9 +22,11 @@ import java.util.Map;
 public class HttpUtillConnection {
 
  public static String BASE_URL = "http://192.168.13.100:8080/hubangpai/LoginUser";
+ public static String Ya_URL = "http://192.168.1.3:8080/hubangpai/";
+
     /*
      * urlStr:网址
-     * parms：提交数据
+     * parms：发送http请求，提交账号密码数据
      * return:网页源码
      * */
     public static  String getContextByHttp(String urlStr,Map<String,String> parms){
@@ -85,6 +87,36 @@ public class HttpUtillConnection {
             sb.append(URLEncoder.encode(entry.getValue(), "utf-8"));
         }
         return sb.toString();
+    }
 
+    public static  String getContextByHttp(String urlStr){
+        StringBuilder sb = new StringBuilder();
+        try{
+            URL url = new URL(urlStr);
+            HttpURLConnection connection = (HttpURLConnection)url.openConnection();
+            connection.setRequestMethod("POST");
+            connection.setReadTimeout(5000);
+            connection.setConnectTimeout(5000);
+            connection.setDoInput(true);
+            connection.setDoOutput(true);
+            connection.setInstanceFollowRedirects(true);
+
+            if(connection.getResponseCode() == HttpURLConnection.HTTP_OK){
+                BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+                String temp;
+                while((temp = reader.readLine()) != null){
+                    sb.append(temp);
+                }
+                reader.close();
+            }else{
+                return "connection error:" + connection.getResponseCode();
+            }
+
+            connection.disconnect();
+        }catch (Exception e){
+            return e.toString();
+        }
+        return sb.toString();
     }
 }
+

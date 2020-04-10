@@ -5,39 +5,44 @@
     android:layout_height="match_parent"
     android:padding="15dp"
     tools:context=".ui.home.LoginActivity">
+
     <EditText
         android:id="@+id/login_username"
-        android:layout_marginTop="150dp"
-
         android:layout_width="match_parent"
+
         android:layout_height="50dp"
-        android:textSize="16sp"
-        android:textColor="#1AE6E6"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="165dp"
+        android:layout_marginEnd="14dp"
         android:background="@drawable/et_username"
+        android:drawableLeft="@drawable/username"
+        android:drawablePadding="5dp"
+        android:hint="用户名"
+        android:maxLines="1"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
-        android:drawablePadding="5dp"
-        android:maxLines="1"
-        android:drawableLeft="@drawable/username"
-        android:hint="用户名">
-    </EditText>
+        android:textColor="#1AE6E6"
+        android:textSize="16sp"></EditText>
+
     <EditText
         android:id="@+id/login_password"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:textSize="16sp"
-        android:textColor="#1AE6E6"
-        android:hint="密码"
         android:layout_below="@id/login_username"
+        android:layout_alignParentEnd="true"
         android:layout_marginTop="15dp"
-        android:inputType="textPassword"
+        android:layout_marginEnd="14dp"
         android:background="@drawable/et_username"
+        android:drawableLeft="@drawable/password"
+        android:drawablePadding="5dp"
+        android:hint="密码"
+        android:inputType="textPassword"
+        android:maxLines="1"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
-        android:drawablePadding="5dp"
-        android:maxLines="1"
-        android:drawableLeft="@drawable/password"
-        >
+        android:textColor="#1AE6E6"
+        android:textSize="16sp">
 
     </EditText>
 
@@ -46,31 +51,38 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_below="@+id/login_password"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="15dp"
         android:layout_marginTop="88dp"
+        android:layout_marginEnd="14dp"
         android:background="@drawable/bt_login"
         android:text="登录"
-        android:textSize="20sp"/>
-
-
-
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_below="@id/bt_login"
-    android:padding="10dp">
-    <Button
-        android:id="@+id/login_button_register"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/bt_login"
-        android:background="@drawable/bt_register"
-        android:text="没有账户，去注册"
-
-        android:textColor="#008577"
         android:textSize="20sp" />
 
 
-</LinearLayout>
+    <Button
+        android:id="@+id/login_button_forgetpsw"
+        android:layout_width="174dp"
+        android:layout_height="67dp"
+        android:layout_below="@+id/bt_login"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="26dp"
+        android:layout_marginEnd="202dp"
+        android:text="忘记密码?"
+        android:textColor="#8181F7"
+        android:textSize="20sp" />
 
+    <Button
+        android:id="@+id/login_button_register"
+        android:layout_width="222dp"
+        android:layout_height="60dp"
+        android:layout_below="@+id/bt_login"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="136dp"
+        android:layout_marginEnd="39dp"
+        android:text="没有账户，去注册"
+        android:textColor="#8181F7"
+        android:textSize="20sp" />
 
 </RelativeLayout>

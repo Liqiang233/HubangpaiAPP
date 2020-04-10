@@ -32,7 +32,10 @@ public class tasklistcAdapter extends RecyclerView.Adapter<tasklistcAdapter.task
 
     @Override
     public void onBindViewHolder(@NonNull taskviewHolder holder, int position) {
-                holder.textView.setText("空");
+
+
+
+
                 holder.textView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
@@ -45,7 +48,9 @@ public class tasklistcAdapter extends RecyclerView.Adapter<tasklistcAdapter.task
     @Override
     public int getItemCount() {
         return 15;
-    }
+    } //设置item数
+
+
     class taskviewHolder extends RecyclerView.ViewHolder{
         private TextView textView;
         public taskviewHolder(@NonNull View context) {
