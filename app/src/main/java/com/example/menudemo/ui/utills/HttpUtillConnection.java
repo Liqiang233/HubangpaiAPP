@@ -22,11 +22,12 @@ import java.util.Map;
 public class HttpUtillConnection {
 
  public static String BASE_URL = "http://192.168.13.100:8080/hubangpai/LoginUser";
+ public static String BASE_URL_Task="http://192.168.13.100:8080/hubangpai/PublishTask";
  public static String Ya_URL = "http://192.168.1.3:8080/hubangpai/";
 
     /*
      * urlStr:网址
-     * parms：发送http请求，提交账号密码数据
+     * parms：提交数据
      * return:网页源码
      * */
     public static  String getContextByHttp(String urlStr,Map<String,String> parms){
@@ -119,4 +120,3 @@ public class HttpUtillConnection {
         return sb.toString();
     }
 }
-
