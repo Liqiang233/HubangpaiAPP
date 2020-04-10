@@ -147,8 +147,8 @@ public class LoginActivity extends AppCompatActivity {
                                             editor.commit();
                                             /*userInfo.setUserInfo(USER_NAME,username);
                                             userInfo.setUserInfo(PASSWORD, password);
+                                            */
 
-                                             */
 
                                             //页面跳转
                                             Intent intent = new Intent();

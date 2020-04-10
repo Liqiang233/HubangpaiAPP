@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
         // 读取数据，第一个参数是键值，第二个参数是找不到对应键值时的返回值
         String name = getdataPreferences.getString("id", null);
         String pwd = getdataPreferences.getString("password", null);
-        if(name==null||pwd==null)
+        if(name==null)
         {
             Intent intent = new Intent(MainActivity.this, LoginActivity.class);
             startActivity(intent);
