@@ -29,6 +29,15 @@ public class SettingsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_settings);
 
+        //返回和标题
+        TextView back = findViewById(R.id.back);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
         context = getApplicationContext();
         sp = getSharedPreferences("userInfo" , MODE_PRIVATE);
         editor = sp.edit();//获取编辑者

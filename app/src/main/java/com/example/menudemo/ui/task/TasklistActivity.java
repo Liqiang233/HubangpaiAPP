@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.example.menudemo.MainActivity;
 import com.example.menudemo.R;
@@ -21,6 +22,16 @@ public class TasklistActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_tasklist);
+
+        //返回和标题
+        TextView back = findViewById(R.id.back);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
         mall=findViewById(R.id.m_all);
         ming=findViewById(R.id.m_ing);
         mdrawback=findViewById(R.id.m_drawback);

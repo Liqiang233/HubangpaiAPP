@@ -72,7 +72,7 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                //跳转到设置页面任务页面
+                //跳转到钱包页面
 
                 //跳转到钱包页面
 
