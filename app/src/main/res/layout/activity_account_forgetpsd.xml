@@ -59,7 +59,8 @@
             android:layout_weight="7"
             android:background="@drawable/et_username"
             android:textColor="#000"
-            android:textSize="30dp" />
+            android:textSize="30dp"
+            android:textAlignment="center"/>
 
         <Button
             android:id="@+id/forgetpsd_button_getcode"
@@ -105,7 +106,8 @@
             android:background="@drawable/et_username"
             android:inputType="textPassword"
             android:textColor="#000"
-            android:textSize="30dp" />
+            android:textSize="30dp"
+            android:textAlignment="center"/>
 
 
     </LinearLayout>
@@ -139,7 +141,8 @@
             android:background="@drawable/et_username"
             android:inputType="textPassword"
             android:textColor="#000"
-            android:textSize="30dp" />
+            android:textSize="30dp"
+            android:textAlignment="center"/>
 
 
     </LinearLayout>
@@ -156,6 +159,7 @@
         app:layout_constraintHorizontal_bias="0.542"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout4"
-        app:layout_constraintVertical_bias="0.296" />
+        app:layout_constraintVertical_bias="0.296"
+        android:onClick="Createre"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

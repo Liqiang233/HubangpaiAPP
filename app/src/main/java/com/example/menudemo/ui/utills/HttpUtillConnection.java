@@ -23,6 +23,7 @@ public class HttpUtillConnection {
 
  public static String BASE_URL = "http://192.168.13.100:8080/hubangpai/LoginUser";
  public static String BASE_URL_Task="http://192.168.13.100:8080/hubangpai/PublishTask";
+ public static String BASE_URL_Task_Ya="http://192.168.1.3:8080/hubangpai/PublishTask";
  public static String Ya_URL = "http://192.168.1.3:8080/hubangpai/";
 
     /*
@@ -96,8 +97,8 @@ public class HttpUtillConnection {
             URL url = new URL(urlStr);
             HttpURLConnection connection = (HttpURLConnection)url.openConnection();
             connection.setRequestMethod("POST");
-            connection.setReadTimeout(5000);
-            connection.setConnectTimeout(5000);
+            connection.setReadTimeout(50000);
+            connection.setConnectTimeout(50000);
             connection.setDoInput(true);
             connection.setDoOutput(true);
             connection.setInstanceFollowRedirects(true);
