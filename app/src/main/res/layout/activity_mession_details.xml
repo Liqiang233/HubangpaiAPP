@@ -11,27 +11,6 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:padding="15dp">
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:padding="15dp"
-            android:orientation="horizontal">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="50dp"
-                android:padding="5dp"
-                android:text="任务编号："
-                android:textColor="#000"
-                android:textSize="25dp" />
-            <TextView
-                android:id="@+id/ac_messionid"
-                android:layout_width="wrap_content"
-                android:layout_height="50dp"
-                android:padding="5dp"
-                android:background="@drawable/et_username"
-                android:textColor="#000"
-                android:textSize="25dp" />
-        </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="80dp"
@@ -51,7 +30,8 @@
             android:padding="5dp"
             android:background="@drawable/et_username"
             android:textColor="#000"
-            android:textSize="25dp" />
+            android:textSize="25dp"
+            android:hint="任务名"/>
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -64,7 +44,8 @@
             android:padding="5dp"
             android:text="任务类型："
             android:textColor="#000"
-            android:textSize="25dp" />
+            android:textSize="25dp"
+           />
         <TextView
             android:id="@+id/ac_messionclass"
             android:layout_width="wrap_content"
@@ -72,7 +53,8 @@
             android:padding="5dp"
             android:background="@drawable/et_username"
             android:textColor="#000"
-            android:textSize="25dp" />
+            android:textSize="25dp"
+            android:hint="类型"/>
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -93,7 +75,8 @@
             android:padding="5dp"
             android:background="@drawable/et_username"
             android:textColor="#000"
-            android:textSize="25dp" />
+            android:textSize="25dp"
+            android:hint="发布人"/>
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -114,11 +97,12 @@
             android:padding="5dp"
             android:background="@drawable/et_username"
             android:textColor="#000"
-            android:textSize="25dp" />
+            android:textSize="25dp"
+            android:hint="任务地址"/>
     </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="80dp"
+            android:layout_height="wrap_content"
             android:padding="15dp"
             android:orientation="horizontal">
             <TextView
@@ -131,11 +115,12 @@
             <TextView
                 android:id="@+id/ac_messionlaunchtime"
                 android:layout_width="wrap_content"
-                android:layout_height="50dp"
+                android:layout_height="wrap_content"
                 android:padding="5dp"
                 android:background="@drawable/et_username"
                 android:textColor="#000"
-                android:textSize="25dp" />
+                android:textSize="25dp"
+                android:hint="发布时间"/>
         </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -156,7 +141,8 @@
             android:padding="5dp"
             android:background="@drawable/et_username"
             android:textColor="#000"
-            android:textSize="25dp" />
+            android:textSize="25dp"
+            android:hint="截止日期"/>
     </LinearLayout>
 
     <LinearLayout
@@ -178,7 +164,8 @@
             android:padding="5dp"
             android:background="@drawable/et_username"
             android:textColor="#000"
-            android:textSize="25dp" />
+            android:textSize="25dp"
+            android:hint="任务状态"/>
 
     </LinearLayout>
         <LinearLayout
@@ -199,29 +186,36 @@
                 android:layout_height="50dp"
                 android:padding="5dp"
                 android:background="@drawable/et_username"
+                android:hint="酬劳"
                 android:textColor="#000"
-                android:textSize="25dp" />
+                android:textSize="25sp"
+                />
         </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="80dp"
+        android:layout_height="wrap_content"
         android:padding="15dp"
         android:orientation="vertical">
+
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="50dp"
             android:padding="5dp"
             android:text="任务详情："
             android:textColor="#000"
-            android:textSize="25dp" />
+            android:textSize="25sp" />
         <TextView
             android:id="@+id/ac_messionndetails"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="5dp"
             android:background="@drawable/et_username"
+            android:hint="详情"
+            android:padding="5dp"
             android:textColor="#000"
-            android:textSize="25dp" />
+            android:textSize="25sp" />
+
+
     </LinearLayout>
         <Button
             android:id="@+id/bt_accept"
@@ -229,9 +223,10 @@
             android:layout_height="50dp"
             android:layout_below="@id/login_password"
             android:layout_marginTop="40dp"
-            android:text="接受任务任务"
+            android:text="接受任务"
             android:textSize="20sp"
             android:background="@drawable/bt_login"
-            ></Button>
+            />
+
     </LinearLayout>
 </ScrollView>

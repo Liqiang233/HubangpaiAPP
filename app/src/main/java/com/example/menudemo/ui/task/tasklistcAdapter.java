@@ -32,33 +32,43 @@ public class tasklistcAdapter extends RecyclerView.Adapter<tasklistcAdapter.task
     @NonNull
     @Override
     public taskviewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new taskviewHolder(LayoutInflater.from(context).inflate(R.layout.task_item,parent,false));
+        View view =LayoutInflater.from(context).inflate(R.layout.task_item,parent,false);
+        final taskviewHolder holder = new taskviewHolder(view);
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int position = holder.getAdapterPosition();
+                //传递数据
+                Intent intent=new Intent(context,MessionDetailsActivity.class);
+                intent.putExtra("messionname",taskList.get(position).getMessionname());
+                intent.putExtra("messionid",taskList.get(position).getMessionid());
+                intent.putExtra("messiontype",taskList.get(position).getMessiontype());
+                intent.putExtra("messioninitiator",taskList.get(position).getInitiator());
+                intent.putExtra("messionacceptor",taskList.get(position).getAcceptor());
+                intent.putExtra("messionaddress",taskList.get(position).getAddress());
+                intent.putExtra("messionlaunchtime",taskList.get(position).getLaunchtime());
+                intent.putExtra("messiondeadline",taskList.get(position).getDeadline());
+                intent.putExtra("messiondetails",taskList.get(position).getDetails());
+                intent.putExtra("messionprice",taskList.get(position).getPrice());
+                intent.putExtra("messionstatus",taskList.get(position).getStatus());
+                context.startActivity(intent);
+            }
+        });
+        return holder;
     }
-    @Override
+    @Override //设置item数
     public int getItemCount()
     {
         return taskList.size();
 
-    } //设置item数
+    }
    //绑定数据
     @Override
     public void onBindViewHolder(@NonNull taskviewHolder holder, int position) {
            //根据点击位置绑定数据
-   Log.i("adataskList:",""+taskList.size());
+
                 holder.textView.setText(taskList.get(position).getMessionname());
-                holder.textView.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
 
-                    }
-                    public void onClick(View view,int position) {
-
-                    Intent intent=new Intent(context,MessionDetailsActivity.class);
-                    intent.putExtra("meissionid",taskList.get(position).getMessionid());
-                    context.startActivity(intent);
-
-                    }
-                });
     }
 
 
@@ -71,26 +81,6 @@ public class tasklistcAdapter extends RecyclerView.Adapter<tasklistcAdapter.task
             textView=context.findViewById(R.id.ts_item1);
         }
     }
-    /**
-     * 设置item的监听事件的接口
-     */
-    public interface OnItemClickListener
-    {
-        /**
-         * 接口中的点击每一项的实现方法，参数自己定义
-         *
-         * @param view 点击的item的视图
-         * @param data 点击的item的数据
-         */
-        public void OnItemClick(View view, Task data);
-    }
-    //需要外部访问，所以需要设置set方法，方便调用
-    private OnItemClickListener onItemClickListener;
-
-    public void setOnItemClickListener(OnItemClickListener onItemClickListener) {
-        this.onItemClickListener = onItemClickListener;
-    }
-
 
 
 }
