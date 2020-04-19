@@ -23,9 +23,10 @@ public class HttpUtillConnection {
 
  public static String BASE_URL = "http://192.168.13.100:8080/hubangpai/LoginUser";
  public static String BASE_URL_Task="http://192.168.13.100:8080/hubangpai/PublishTask";
- public static String BASE_URL_Task_Ya="http://192.168.1.3:8080/hubangpai/PublishTask";
- public static String Ya_URL = "http://192.168.1.3:8080/hubangpai/";
+ public static String base_URL = "http://192.168.13.100:8080/hubangpai/";
 
+ public static String BASE_URL_SearchTask="http://192.168.13.100:8080/hubangpai/SearchTask";
+ public static String BASE_URL_ModifyTask="http://192.168.13.100:8080/hubangpai/ModifyTask";
     /*
      * urlStr:网址
      * parms：提交数据
@@ -67,30 +68,6 @@ public class HttpUtillConnection {
         }
         return sb.toString();
     }
-
-    /**
-     * 将map转换成key1=value1&key2=value2的形式
-     * @param map
-     * @return
-     * @throws UnsupportedEncodingException
-     */
-    private static String getStringFromOutput(Map<String,String> map) throws UnsupportedEncodingException {
-        StringBuilder sb = new StringBuilder();
-        boolean isFirst = true;
-
-        for (Map.Entry<String, String> entry : map.entrySet()) {
-            if (isFirst)
-                isFirst = false;
-            else
-                sb.append("&");
-
-            sb.append(URLEncoder.encode(entry.getKey(), "utf-8"));
-            sb.append("=");
-            sb.append(URLEncoder.encode(entry.getValue(), "utf-8"));
-        }
-        return sb.toString();
-    }
-
     public static  String getContextByHttp(String urlStr){
         StringBuilder sb = new StringBuilder();
         try{
@@ -119,5 +96,29 @@ public class HttpUtillConnection {
             return e.toString();
         }
         return sb.toString();
+    }
+
+    /**
+     * 将map转换成key1=value1&key2=value2的形式
+     * @param map
+     * @return
+     * @throws UnsupportedEncodingException
+     */
+    private static String getStringFromOutput(Map<String,String> map) throws UnsupportedEncodingException {
+        StringBuilder sb = new StringBuilder();
+        boolean isFirst = true;
+
+        for (Map.Entry<String, String> entry : map.entrySet()) {
+            if (isFirst)
+                isFirst = false;
+            else
+                sb.append("&");
+
+            sb.append(URLEncoder.encode(entry.getKey(), "utf-8"));
+            sb.append("=");
+            sb.append(URLEncoder.encode(entry.getValue(), "utf-8"));
+        }
+        return sb.toString();
+
     }
 }

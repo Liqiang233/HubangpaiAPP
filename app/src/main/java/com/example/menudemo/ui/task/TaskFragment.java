@@ -54,7 +54,6 @@ public class TaskFragment extends Fragment{
                               @Nullable ViewGroup container,@Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_task,container,false);
         setHasOptionsMenu(true);//启用menu
-        initRecyclerView();
         initData();
         return view;
 
@@ -67,7 +66,7 @@ public   void initData()
         @Override
         public void run() {
             //    String url = HttpUtillConnection.BASE_URL+"/servlet/LoginServlet";
-            String url = HttpUtillConnection.Ya_URL+"ReturnTask";
+            String url = HttpUtillConnection.base_URL+"ReturnTask";
             String result = HttpUtillConnection.getContextByHttp(url);
             Log.i("searchresult:", result);
             Message msg = new Message();
@@ -120,7 +119,16 @@ public   void initData()
 
                             Log.i("messionid:",messionid);
                             Log.i("taskList:",taskList.toString());
-
+                            //获取RecyclerView
+                            recy=view.findViewById(R.id.task_rec);
+                            //创建adapter
+                            Log.i("zhutaskList:",taskList.toString());
+                            taskAdapter = new tasklistcAdapter(getActivity(),taskList);
+                            //set adapter
+                            recy.setAdapter(taskAdapter);
+                            //设置layoutManager,可以设置显示效果，是线性布局、grid布局，还是瀑布流布局
+                            //参数是：上下文、列表方向（横向还是纵向）、是否倒叙
+                            recy.setLayoutManager(new LinearLayoutManager(TaskFragment.this.getActivity()));
 
 
                         }
@@ -134,20 +142,7 @@ public   void initData()
 
     }).start();
 }
-public void initRecyclerView()
-    {
-        //获取RecyclerView
-        recy=view.findViewById(R.id.task_rec);
-        //创建adapter
-        Log.i("zhutaskList:",taskList.toString());
-        taskAdapter = new tasklistcAdapter(getActivity(),taskList);
-        //set adapter
-        recy.setAdapter(taskAdapter);
-        //设置layoutManager,可以设置显示效果，是线性布局、grid布局，还是瀑布流布局
-        //参数是：上下文、列表方向（横向还是纵向）、是否倒叙
-        recy.setLayoutManager(new LinearLayoutManager(this.getActivity()));
 
-    }
 
 
     //展示actionbar的菜单按钮
@@ -159,14 +154,19 @@ public void initRecyclerView()
     }
      //给菜单按钮定义点击动作
     public boolean onOptionsItemSelected(MenuItem item) {
+        Intent intent;
         switch (item.getItemId()){
             case R.id.task_add_item:
-                Intent intent = new Intent(getActivity(),PublishActivity.class);
+                intent = new Intent(getActivity(),PublishActivity.class);
                 startActivity(intent);
                 return true;
             case R.id.option_normal_2:
+                intent = new Intent(getActivity(),MyPublishActivity.class);
+                startActivity(intent);
                 return true;
             case R.id.option_normal_3:
+                intent = new Intent(getActivity(),MyAcceptActivity.class);
+                startActivity(intent);
                 return true;
             case R.id.option_normal_4:
                 return true;
