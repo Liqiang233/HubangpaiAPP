@@ -27,6 +27,9 @@ public class HttpUtillConnection {
 
  public static String BASE_URL_SearchTask="http://192.168.13.100:8080/hubangpai/SearchTask";
  public static String BASE_URL_ModifyTask="http://192.168.13.100:8080/hubangpai/ModifyTask";
+public static String Ya_URL="http://192.168.1.3:8080/hubangpai/";
+
+
     /*
      * urlStr:网址
      * parms：提交数据
