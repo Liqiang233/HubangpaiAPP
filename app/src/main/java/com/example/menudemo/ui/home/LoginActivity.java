@@ -12,9 +12,7 @@ import android.os.Message;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.menudemo.MainActivity;
@@ -26,8 +24,6 @@ import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Timer;
-import java.util.TimerTask;
 /*
    * @author  Yapi
    * @note  登陆界面的逻辑设计
@@ -61,7 +57,7 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.activity_account_login);
 
 
         context = getApplicationContext();
@@ -70,21 +66,17 @@ public class LoginActivity extends AppCompatActivity {
         userInfo = new UserInfo(this);
 
 
-
-
         bt_login = findViewById(R.id.bt_login);
         login_username=findViewById(R.id.login_username);
         login_password=findViewById(R.id.login_password);
-
         bt_register = findViewById(R.id.login_button_register);
-
+        bt_forgetpsd = findViewById(R.id.login_button_forgetpsw);
 
 
 
         //用户注册
         bt_register.setOnClickListener(new View.OnClickListener()
         {
-
             @Override
             public void onClick(View view) {
                 //跳转到注册界面
@@ -92,7 +84,16 @@ public class LoginActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
+        //忘记密码
+        bt_forgetpsd.setOnClickListener(new View.OnClickListener()
+            {
+              @Override
+              public void onClick(View v) {
+              Intent intent = new Intent(LoginActivity.this,ForgetpsdActivity.class);
+              startActivity(intent);
+              }
+            }
+        );
         //登陆按钮  操作
         bt_login.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -107,7 +108,7 @@ public class LoginActivity extends AppCompatActivity {
                         @Override
                         public void run() {
                             //    String url = HttpUtillConnection.BASE_URL+"/servlet/LoginServlet";
-                            String url = HttpUtillConnection.BASE_URL;
+                            String url = HttpUtillConnection.Ya_URL+"LoginUser";
                             Map<String, String> params = new HashMap<String, String>();
                             String name = login_username.getText().toString();
                             String psd = login_password.getText().toString();
@@ -118,14 +119,14 @@ public class LoginActivity extends AppCompatActivity {
                             Log.i("===========", result.toString());
                             Message msg = new Message();
                             msg.what = 0x12;
-                            Bundle data = new Bundle();
+                            Bundle data = new Bundle();   //bundle 主要用于app内传递数据，以键值对的形势存在
                             data.putString("result", result);
                             Log.i("*********************", result.toString());
                             msg.setData(data);
                             hander.sendMessage(msg);
                         }
 
-                        @SuppressLint("HandlerLeak")
+                        @SuppressLint("HandlerLeak")    //Handler用于管理线程或者进程的消息队列
                         Handler hander = new Handler() {
                             @Override
                             public void handleMessage(Message msg) {
@@ -140,16 +141,15 @@ public class LoginActivity extends AppCompatActivity {
                                         String result = (String) json.get("result");
                                         if ("success".equals(result)) {
 
-                                            //返回成功后  判断是否勾选自动登陆和记住密码 写入文件
+                                            //返回成功后  将登陆的用户名保存在SharedPreferences中
+                                            //SharedPreferences:轻量级的存储类，以键值对的形式存在
                                             username = login_username.getText().toString();
                                             password = login_password.getText().toString();
                                             editor.putString("id",username);
                                             editor.commit();
                                             /*userInfo.setUserInfo(USER_NAME,username);
                                             userInfo.setUserInfo(PASSWORD, password);
-                                            */
-
-
+                                             */
                                             //页面跳转
                                             Intent intent = new Intent();
                                             Bundle bundle = new Bundle();

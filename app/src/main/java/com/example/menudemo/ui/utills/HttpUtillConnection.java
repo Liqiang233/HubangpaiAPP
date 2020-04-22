@@ -21,8 +21,12 @@ import java.util.Map;
  */
 public class HttpUtillConnection {
 
- public static String BASE_URL = "http://192.168.2.143:8080/hubangpai/LoginUser";
- public static String BASE_URL_Task="http://192.168.2.143:8080/hubangpai/PublishTask";
+ public static String BASE_URL = "http://192.168.13.100:8080/hubangpai/LoginUser";
+ public static String BASE_URL_Task="http://192.168.13.100:8080/hubangpai/PublishTask";
+ public static String base_URL = "http://192.168.13.100:8080/hubangpai/";
+
+ public static String BASE_URL_SearchTask="http://192.168.13.100:8080/hubangpai/SearchTask";
+ public static String BASE_URL_ModifyTask="http://192.168.13.100:8080/hubangpai/ModifyTask";
     /*
      * urlStr:网址
      * parms：提交数据
@@ -46,6 +50,35 @@ public class HttpUtillConnection {
             writer.flush();
             writer.close();
             outputStream.close();
+
+            if(connection.getResponseCode() == HttpURLConnection.HTTP_OK){
+                BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+                String temp;
+                while((temp = reader.readLine()) != null){
+                    sb.append(temp);
+                }
+                reader.close();
+            }else{
+                return "connection error:" + connection.getResponseCode();
+            }
+
+            connection.disconnect();
+        }catch (Exception e){
+            return e.toString();
+        }
+        return sb.toString();
+    }
+    public static  String getContextByHttp(String urlStr){
+        StringBuilder sb = new StringBuilder();
+        try{
+            URL url = new URL(urlStr);
+            HttpURLConnection connection = (HttpURLConnection)url.openConnection();
+            connection.setRequestMethod("POST");
+            connection.setReadTimeout(50000);
+            connection.setConnectTimeout(50000);
+            connection.setDoInput(true);
+            connection.setDoOutput(true);
+            connection.setInstanceFollowRedirects(true);
 
             if(connection.getResponseCode() == HttpURLConnection.HTTP_OK){
                 BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));

@@ -100,7 +100,7 @@ public class PublishActivity extends AppCompatActivity implements AdapterView.On
                             String nowAsIOS = df.format(date);
                             LaunchTime = nowAsIOS;
 
-                            String url = HttpUtillConnection.BASE_URL_Task;
+                            String url = HttpUtillConnection.BASE_URL_Task_Ya;
                             Map<String, String> params = new HashMap<String, String>();
                             params.put("MessionName", MessionName);
                             params.put("MessionType", MessionType);

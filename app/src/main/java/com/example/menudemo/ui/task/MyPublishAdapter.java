@@ -6,7 +6,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -15,15 +14,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.menudemo.R;
 import com.example.menudemo.ui.utills.Task;
 
-import java.util.ArrayList;
 import java.util.List;
 
-public class tasklistcAdapter extends RecyclerView.Adapter<tasklistcAdapter.taskviewHolder> {
+public class MyPublishAdapter extends RecyclerView.Adapter<MyPublishAdapter.taskviewHolder> {
 
     private Context context;
     private List<Task> taskList ;
 
-    public tasklistcAdapter(Context context, List<Task> taskList){
+    public MyPublishAdapter(Context context, List<Task> taskList){
         this.context=context;
         this.taskList=taskList;
     }
@@ -32,14 +30,14 @@ public class tasklistcAdapter extends RecyclerView.Adapter<tasklistcAdapter.task
     @NonNull
     @Override
     public taskviewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view =LayoutInflater.from(context).inflate(R.layout.task_item,parent,false);
+        View view =LayoutInflater.from(context).inflate(R.layout.mypub_item,parent,false);
         final taskviewHolder holder = new taskviewHolder(view);
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 int position = holder.getAdapterPosition();
                 //传递数据
-                Intent intent=new Intent(context,MessionDetailsActivity.class);
+                Intent intent=new Intent(context,MessionModifyActivity.class);
                 intent.putExtra("messionname",taskList.get(position).getMessionname());
                 intent.putExtra("messionid",taskList.get(position).getMessionid());
                 intent.putExtra("messiontype",taskList.get(position).getMessiontype());
@@ -71,14 +69,11 @@ public class tasklistcAdapter extends RecyclerView.Adapter<tasklistcAdapter.task
 
     }
 
-
-
-
     class taskviewHolder extends RecyclerView.ViewHolder{
         private TextView textView;
         public taskviewHolder(@NonNull View context) {
             super(context);
-            textView=context.findViewById(R.id.ts_item1);
+            textView=context.findViewById(R.id.ts_item2);
         }
     }
 

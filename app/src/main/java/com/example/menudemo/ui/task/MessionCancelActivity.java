@@ -11,14 +11,11 @@ import android.os.Message;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.menudemo.MainActivity;
 import com.example.menudemo.R;
-import com.example.menudemo.ui.home.LoginActivity;
 import com.example.menudemo.ui.utills.HttpUtillConnection;
 
 import org.json.JSONException;
@@ -29,12 +26,7 @@ import java.util.Map;
 import java.util.Timer;
 import java.util.TimerTask;
 
-/*
-   *    点击RecyclerView的item进来，展示任务详情
-   *    @author shijizhe
-   *    @time 2020/4/17
-    */
-public class MessionDetailsActivity extends AppCompatActivity {
+public class MessionCancelActivity extends AppCompatActivity {
     private TextView mclass = null;
     private TextView mname = null;
     private TextView maddress = null;
@@ -48,28 +40,25 @@ public class MessionDetailsActivity extends AppCompatActivity {
     private TextView mstatus = null;
     private SharedPreferences sp;
 
-
     public String result;
-    public String acceptUrl = HttpUtillConnection.Ya_URL + "AcceptTask";
+    public String CancelUrl = HttpUtillConnection.base_URL + "CancelTask";
     String Acceptor,Status,id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_mession_details);
-
+        setContentView(R.layout.activity_mession_cancel);
         sp = getSharedPreferences("userInfo", MODE_PRIVATE);
-
-        mclass = findViewById(R.id.ac_messionclass);  //任务类型
-        mname = findViewById(R.id.ac_messionnname);   //任务名称
-        maddress = findViewById(R.id.ac_messionaddress); //地址
-        mdetails = findViewById(R.id.ac_messionndetails);  //详细描述
-        mdeadline = findViewById(R.id.ac_messionndeadline);  //截止日期
-        mpay = findViewById(R.id.ac_messionpay);  //酬劳
-        mtime = findViewById(R.id.ac_messionlaunchtime);  //  发布日期
-        mman = findViewById(R.id.ac_messionninitiator);   //发布者
-        mstatus = findViewById(R.id.ac_messionnstatus);   //状态
-        mcommit = findViewById(R.id.bt_accept);    //接受任务
+        mclass = findViewById(R.id.myac_messionclass);  //任务类型
+        mname = findViewById(R.id.myac_messionnname);   //任务名称
+        maddress = findViewById(R.id.myac_messionaddress); //地址
+        mdetails = findViewById(R.id.myac_messionndetails);  //详细描述
+        mdeadline = findViewById(R.id.myac_messionndeadline);  //截止日期
+        mpay = findViewById(R.id.myac_messionpay);  //酬劳
+        mtime = findViewById(R.id.myac_messionlaunchtime);  //  发布日期
+        mman = findViewById(R.id.myac_messionninitiator);   //发布者
+        mstatus = findViewById(R.id.myac_messionnstatus);   //状态
+        mcommit = findViewById(R.id.bt_cancel);    //取消任务
 
 
         //界面间传递数据
@@ -88,21 +77,14 @@ public class MessionDetailsActivity extends AppCompatActivity {
         Acceptor = intent.getStringExtra("messionacceptor");
         Status = intent.getStringExtra("messionstatus");
         Log.i("Status",Status);
-        if (Status.equals("已接受")) {
-            mcommit.setEnabled(false);
-            mcommit.setText("任务已被接受");
-        } else {
-            //点击mcommit接受任务
 
-            mcommit.setEnabled(true);
-            mcommit.setText("接受任务");
+            //点击mcommit取消任务
             mcommit.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
 
                     Acceptor = sp.getString("id", null);
-                    Log.i("Acceptor", Acceptor);
-                    Status="已接受";
+                    Status="待接受";
                     final Map<String, String> params = new HashMap<String, String>();
                     params.put("Acceptor", Acceptor);
                     params.put("Status",Status);
@@ -112,7 +94,7 @@ public class MessionDetailsActivity extends AppCompatActivity {
                         public void run() {
                             //1、网络访问
                             try {
-                                result = HttpUtillConnection.getContextByHttp(acceptUrl, params);
+                                result = HttpUtillConnection.getContextByHttp(CancelUrl, params);
                                 Log.i("000000000000000000", result.toString().trim());
 
                             } catch (Exception e) {
@@ -144,26 +126,26 @@ public class MessionDetailsActivity extends AppCompatActivity {
                                         JSONObject json = new JSONObject(key);
                                         String result = (String) json.get("result");
                                         if ("fail".equals(result)) {
-                                            Toast.makeText(MessionDetailsActivity.this, "接受失败", Toast.LENGTH_SHORT).show();
+                                            Toast.makeText(MessionCancelActivity.this, "取消失败", Toast.LENGTH_SHORT).show();
                                         }
                                         else if ("success".equals(result))
                                         {//接受成功
 
-                                                Toast.makeText(MessionDetailsActivity.this, "接受任务成功", Toast.LENGTH_SHORT).show();
-                                                /*暂停1.5秒后跳转到登录界面*/
-                                                final Intent localIntent = new Intent(MessionDetailsActivity.this, MainActivity.class);
-                                                Timer timer = new Timer();
-                                                TimerTask tast = new TimerTask() {
-                                                    @Override
-                                                    public void run() {
-                                                        startActivity(localIntent);
-                                                    }
-                                                };
-                                                timer.schedule(tast, 1500);
-                                            }
+                                            Toast.makeText(MessionCancelActivity.this, "取消任务成功", Toast.LENGTH_SHORT).show();
+                                            /*暂停1.5秒后跳转到登录界面*/
+                                            final Intent localIntent = new Intent(MessionCancelActivity.this, MainActivity.class);
+                                            Timer timer = new Timer();
+                                            TimerTask tast = new TimerTask() {
+                                                @Override
+                                                public void run() {
+                                                    startActivity(localIntent);
+                                                }
+                                            };
+                                            timer.schedule(tast, 1500);
+                                        }
                                         else
                                         {
-                                            Toast.makeText(MessionDetailsActivity.this, "未知错误", Toast.LENGTH_SHORT).show();
+                                            Toast.makeText(MessionCancelActivity.this, "未知错误", Toast.LENGTH_SHORT).show();
                                         }
 
                                     } catch (JSONException e) {
@@ -179,10 +161,6 @@ public class MessionDetailsActivity extends AppCompatActivity {
             });
 
 
-        }
-    }
-    protected void onResume()
-    {
-        super.onResume();
-    }
+
+}
 }
