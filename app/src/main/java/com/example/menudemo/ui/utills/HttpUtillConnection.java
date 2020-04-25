@@ -21,13 +21,16 @@ import java.util.Map;
  */
 public class HttpUtillConnection {
 
+
+    public static String Ya_URL="http://192.168.1.7:8080/hubangpai/";
+
+
  public static String BASE_URL = "http://192.168.13.100:8080/hubangpai/LoginUser";
  public static String BASE_URL_Task="http://192.168.13.100:8080/hubangpai/PublishTask";
  public static String base_URL = "http://192.168.13.100:8080/hubangpai/";
-
  public static String BASE_URL_SearchTask="http://192.168.13.100:8080/hubangpai/SearchTask";
  public static String BASE_URL_ModifyTask="http://192.168.13.100:8080/hubangpai/ModifyTask";
-public static String Ya_URL="http://192.168.1.3:8080/hubangpai/";
+
 
 
     /*
