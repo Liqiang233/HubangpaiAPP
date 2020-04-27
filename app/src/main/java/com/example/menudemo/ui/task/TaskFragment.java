@@ -1,17 +1,25 @@
 package com.example.menudemo.ui.task;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.IBinder;
 import android.os.Message;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -39,13 +47,29 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-
+/*
+    * author shijizhe
+    * note: 发送http请求
+    * 接收eclipse传回来的数据库数据
+    * 并将数据传到对应的Adapter
+    *
+ */
 public class TaskFragment extends Fragment{
 
+    //String url = HttpUtillConnection.base_URL+"ReturnTask";
+    String url = HttpUtillConnection.Ya_URL+"ReturnTask";
+    private EditText task_et_search;
+    /**
+     * 删除按钮
+     */
+    private ImageView mImgvDelete;
     private View view;  //定义view用来设置fragment的layout
     public RecyclerView recy;   //定义RecyclerView
     private tasklistcAdapter taskAdapter;  //定义自己创建的Adapter
-    public List<Task> taskList=new ArrayList<>();   //定义实体类
+    public List<Task> taskList=new ArrayList<>();   //定义全部实体类
+    public List<Task> list=new ArrayList<>();   ////定义符合搜索条件的数据
+//    public RecyclerView layout;
+//    public MotionEvent mv;
 
 
     @NonNull
@@ -54,19 +78,30 @@ public class TaskFragment extends Fragment{
                               @Nullable ViewGroup container,@Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_task,container,false);
         setHasOptionsMenu(true);//启用menu
-        initData();
+
+
+        task_et_search = view.findViewById(R.id.task_et_sertext);
+        mImgvDelete = view.findViewById(R.id.imgv_delete);
+        recy=view.findViewById(R.id.task_rec);
+
+
+         initData();
+         refreshUI();
+         setListener();
+
         return view;
 
 
 
     }
+    //初始化数据
 public   void initData()
 {
     new Thread(new Runnable() {
         @Override
         public void run() {
             //    String url = HttpUtillConnection.BASE_URL+"/servlet/LoginServlet";
-            String url = HttpUtillConnection.base_URL+"ReturnTask";
+
             String result = HttpUtillConnection.getContextByHttp(url);
             Log.i("searchresult:", result);
             Message msg = new Message();
@@ -117,21 +152,26 @@ public   void initData()
 
                             taskList.add(task);
 
+
                             Log.i("messionid:",messionid);
                             Log.i("taskList:",taskList.toString());
-                            //获取RecyclerView
-                            recy=view.findViewById(R.id.task_rec);
                             //创建adapter
                             Log.i("zhutaskList:",taskList.toString());
-                            taskAdapter = new tasklistcAdapter(getActivity(),taskList);
+
+                            //初始化adapter
+                            taskAdapter = new tasklistcAdapter(getActivity(),list);
                             //set adapter
                             recy.setAdapter(taskAdapter);
                             //设置layoutManager,可以设置显示效果，是线性布局、grid布局，还是瀑布流布局
                             //参数是：上下文、列表方向（横向还是纵向）、是否倒叙
                             recy.setLayoutManager(new LinearLayoutManager(TaskFragment.this.getActivity()));
-
+                            //初次进入程序时 展示全部数据
 
                         }
+
+                        list.addAll(taskList);
+
+
 
                     } catch (Exception e) {
                         e.printStackTrace();
@@ -143,6 +183,92 @@ public   void initData()
     }).start();
 }
 
+
+  //设置搜索框监听
+    private  void setListener()
+    {
+
+         task_et_search.addTextChangedListener(new TextWatcher() {
+             @Override
+             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+             }
+
+             @Override
+             public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+             }
+             //每次edittext内容改变时执行 控制删除按钮的显示隐藏
+             @Override
+             public void afterTextChanged(Editable editable) {
+                 if (editable.length() == 0) {
+                     mImgvDelete.setVisibility(View.GONE);
+                 } else {
+                     mImgvDelete.setVisibility(View.VISIBLE);
+                 }
+                 //匹配文字 变色
+                 doChangeColor(editable.toString().trim());
+             }
+         });
+        //删除按钮的监听
+        mImgvDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+               task_et_search.setText("");
+            }
+        });
+
+    }
+
+    /**
+     * 字体匹配方法
+     * text:需要变色的字
+     */
+    private void doChangeColor(String text) {
+           list.clear();
+        //不需要匹配 把所有数据都传进来 不需要变色
+           if(text.equals(""))
+           {
+               list.addAll(taskList);
+               //防止匹配过文字之后点击删除按钮 字体仍然变色的问题
+               taskAdapter.setText(null);
+               refreshUI();
+           }
+           else //如果edittext里面有数据 则根据edittext里面的数据进行匹配
+           // 用contains判断是否包含该条数据 包含的话则加入到list中
+           {
+
+               for(int i=0;i<taskList.size();i++)
+               {
+                   String str=taskList.get(i).getMessionname();
+                   if(str.contains(text))
+                   {
+                       list.add(taskList.get(i));
+                   }
+               }
+
+           }
+           taskAdapter.setText(text);
+           refreshUI();
+    }
+    /**
+     * 刷新UI
+     */
+    private void refreshUI() {
+        if (taskAdapter == null) {
+            //初始化adapter
+            taskAdapter = new tasklistcAdapter(getActivity(),list);
+            //set adapter
+            recy.setAdapter(taskAdapter);
+            //设置layoutManager,可以设置显示效果，是线性布局、grid布局，还是瀑布流布局
+            //参数是：上下文、列表方向（横向还是纵向）、是否倒叙
+            recy.setLayoutManager(new LinearLayoutManager(TaskFragment.this.getActivity()));
+            //初次进入程序时 展示全部数据
+
+        } else {
+            taskAdapter.notifyDataSetChanged();
+        }
+    }
 
 
     //展示actionbar的菜单按钮
@@ -177,3 +303,4 @@ public   void initData()
 
 
 }
+
