@@ -25,6 +25,10 @@ import java.util.Map;
 
 public class MyAcceptActivity extends AppCompatActivity {
 
+
+
+   // String url = HttpUtillConnection.base_URL+"SearchTaskByAcceptorID";
+   String url = HttpUtillConnection.Ya_URL+"SearchTaskByAcceptorID";
     private View view;  //定义view用来设置fragment的layout
     public RecyclerView recy;   //定义RecyclerView
     private MyAcceptAdapter taskAdapter;  //定义自己创建的Adapter
@@ -41,7 +45,7 @@ public class MyAcceptActivity extends AppCompatActivity {
             @Override
             public void run() {
                 //    String url = HttpUtillConnection.BASE_URL+"/servlet/LoginServlet";
-                String url = HttpUtillConnection.base_URL+"SearchTaskByAcceptorID";
+
                 Map<String, String> params = new HashMap<String, String>();
                 String USERID = sp.getString("id", null);
                 params.put("USERID", USERID);

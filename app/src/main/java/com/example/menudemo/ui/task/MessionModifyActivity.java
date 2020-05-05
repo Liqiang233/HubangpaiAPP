@@ -32,6 +32,14 @@ import java.util.Map;
 import java.util.TimeZone;
 
 public class MessionModifyActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
+
+
+    //String url = HttpUtillConnection.BASE_URL_ModifyTask;  @Tenda
+    String url = HttpUtillConnection.Ya_URL+"ModifyTask";   //@Ya
+    // String url=                  //@liqiang
+
+
+
     private Spinner mclass=null;
     private EditText mname=null;
     private EditText maddress=null;
@@ -99,7 +107,7 @@ public class MessionModifyActivity extends AppCompatActivity implements AdapterV
                     @Override
                     public void run() {
 
-                        String url = HttpUtillConnection.BASE_URL_ModifyTask;
+
                         Map<String, String> params = new HashMap<String, String>();
                         params.put("MesionID", id);
                         params.put("MessionName", MessionName);

@@ -218,6 +218,16 @@
 
     </LinearLayout>
         <Button
+            android:id="@+id/bt_chat"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_below="@id/login_password"
+            android:layout_marginTop="40dp"
+            android:text="谈一谈"
+            android:textSize="20sp"
+            android:background="@drawable/bt_login"
+            />
+        <Button
             android:id="@+id/bt_accept"
             android:layout_width="match_parent"
             android:layout_height="50dp"

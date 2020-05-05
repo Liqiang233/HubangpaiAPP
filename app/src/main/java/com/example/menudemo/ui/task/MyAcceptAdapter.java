@@ -2,6 +2,7 @@ package com.example.menudemo.ui.task;
 
 import android.content.Context;
 import android.content.Intent;
+import android.text.style.ForegroundColorSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,7 +26,6 @@ public class MyAcceptAdapter extends RecyclerView.Adapter<MyAcceptAdapter.taskvi
         this.taskList=taskList;
     }
 
-    //创建viewHolder
     @NonNull
     @Override
     public taskviewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {

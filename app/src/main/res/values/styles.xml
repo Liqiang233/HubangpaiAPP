@@ -8,5 +8,13 @@
         <item name="colorAccent">@color/colorAccent</item>
 
     </style>
+    <declare-styleable name="EaseConversationList">
+        <attr name="cvsListPrimaryTextColor" format="color"/>
+        <attr name="cvsListSecondaryTextColor" format="color"/>
+        <attr name="cvsListTimeTextColor" format="color"/>
+        <attr name="cvsListPrimaryTextSize" format="dimension"/>
+        <attr name="cvsListSecondaryTextSize" format="dimension"/>
+        <attr name="cvsListTimeTextSize" format="dimension"/>
+    </declare-styleable>
 
 </resources>

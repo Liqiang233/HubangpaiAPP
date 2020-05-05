@@ -18,7 +18,6 @@ import androidx.fragment.app.Fragment;
 
 
 import com.example.menudemo.R;
-import com.example.menudemo.ui.task.TasklistActivity;
 
 
 public class HomeFragment extends Fragment {
@@ -53,19 +52,6 @@ public class HomeFragment extends Fragment {
             }
         });
 
-        TextView bt_tasklist = root.findViewById(R.id.my_tasklist);
-        bt_tasklist.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                //跳转到设置页面任务页面
-
-                //跳转到我的任务页面
-
-                Intent intent = new Intent(getActivity(), TasklistActivity.class);
-                startActivity(intent);
-            }
-        });
 
         TextView bt_wallet = root.findViewById(R.id.my_wallet);
         bt_wallet.setOnClickListener(new View.OnClickListener() {

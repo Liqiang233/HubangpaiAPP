@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/iii"
+    android:fadeScrollbars="true"
+    android:fillViewport="true"
+    tools:context=".ui.notifications.activity.ChatActivity">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#404040"
+        android:id="@+id/bt_xx"
+     >
+
+        <ImageView
+            android:id="@+id/back"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_centerVertical="true"
+            android:background="@drawable/back" />
+        <TextView
+            android:textColor="#ffffff"
+            android:text="username"
+            android:textSize="18sp"
+            android:id="@+id/bt_name_chat"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/ec_layout_input"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true">
+
+
+        <LinearLayout
+            android:layout_alignParentBottom="true"
+            android:id="@+id/chat_part"
+            android:layout_width="match_parent"
+            android:layout_height="45dp">
+
+            <EditText
+                android:id="@+id/sendMsg"
+                android:layout_width="326dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_horizontal"
+                android:layout_weight="20"
+                android:background="#fff"
+                android:inputType="text" />
+
+            <Button
+                android:id="@+id/send"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_horizontal"
+                android:layout_weight="1"
+                android:background="@drawable/ic_button_blue"
+                android:text="发送" />
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_below="@id/bt_xx"
+        android:layout_above="@id/ec_layout_input"
+        android:id="@+id/messageRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+</RelativeLayout>

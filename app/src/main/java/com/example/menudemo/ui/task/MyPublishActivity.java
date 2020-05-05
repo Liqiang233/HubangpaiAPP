@@ -26,6 +26,10 @@ import java.util.Map;
 import java.util.zip.Inflater;
 
 public class MyPublishActivity extends AppCompatActivity {
+
+ //   String url = HttpUtillConnection.base_URL+"SearchTaskByUSERID";
+ String url = HttpUtillConnection.Ya_URL+"SearchTaskByUSERID";
+
     private View view;  //定义view用来设置fragment的layout
     public RecyclerView recy;   //定义RecyclerView
     private MyPublishAdapter taskAdapter;  //定义自己创建的Adapter
@@ -42,7 +46,7 @@ public class MyPublishActivity extends AppCompatActivity {
             @Override
             public void run() {
                 //    String url = HttpUtillConnection.BASE_URL+"/servlet/LoginServlet";
-                String url = HttpUtillConnection.base_URL+"SearchTaskByUSERID";
+
                 Map<String, String> params = new HashMap<String, String>();
                 String USERID = sp.getString("id", null);
                 params.put("USERID", USERID);

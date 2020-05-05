@@ -25,7 +25,10 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Timer;
 import java.util.TimerTask;
+/*
+*    取消任务
 
+ */
 public class MessionCancelActivity extends AppCompatActivity {
     private TextView mclass = null;
     private TextView mname = null;
@@ -41,7 +44,8 @@ public class MessionCancelActivity extends AppCompatActivity {
     private SharedPreferences sp;
 
     public String result;
-    public String CancelUrl = HttpUtillConnection.base_URL + "CancelTask";
+   // public String CancelUrl = HttpUtillConnection.base_URL + "CancelTask";
+    public String CancelUrl = HttpUtillConnection.Ya_URL+"CancelTask";
     String Acceptor,Status,id;
 
     @Override

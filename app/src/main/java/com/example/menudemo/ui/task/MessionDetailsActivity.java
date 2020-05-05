@@ -3,22 +3,22 @@ package com.example.menudemo.ui.task;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.menudemo.MainActivity;
 import com.example.menudemo.R;
-import com.example.menudemo.ui.home.LoginActivity;
+import com.example.menudemo.ui.notifications.activity.ChatActivity;
 import com.example.menudemo.ui.utills.HttpUtillConnection;
 
 import org.json.JSONException;
@@ -30,10 +30,10 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 /*
-   *    点击RecyclerView的item进来，展示任务详情
-   *    @author shijizhe
-   *    @time 2020/4/17
-    */
+ *    点击RecyclerView的item进来，展示任务详情
+ *    @author shijizhe
+ *    @time 2020/4/17
+ */
 public class MessionDetailsActivity extends AppCompatActivity {
     private TextView mclass = null;
     private TextView mname = null;
@@ -42,16 +42,16 @@ public class MessionDetailsActivity extends AppCompatActivity {
     private TextView mdeadline = null;
     private TextView mpay = null;
     private Button mcommit = null;
+    private Button mchat = null;
     private TextView mid = null;
     private TextView mtime = null;
     private TextView mman = null;
     private TextView mstatus = null;
     private SharedPreferences sp;
-
-
     public String result;
     public String acceptUrl = HttpUtillConnection.Ya_URL + "AcceptTask";
     String Acceptor,Status,id;
+    String receiver;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,7 +70,7 @@ public class MessionDetailsActivity extends AppCompatActivity {
         mman = findViewById(R.id.ac_messionninitiator);   //发布者
         mstatus = findViewById(R.id.ac_messionnstatus);   //状态
         mcommit = findViewById(R.id.bt_accept);    //接受任务
-
+        mchat = findViewById(R.id.bt_chat);
 
         //界面间传递数据
         Intent intent = getIntent();
@@ -87,15 +87,32 @@ public class MessionDetailsActivity extends AppCompatActivity {
         id = intent.getStringExtra("messionid");
         Acceptor = intent.getStringExtra("messionacceptor");
         Status = intent.getStringExtra("messionstatus");
-        Log.i("Status",Status);
+        receiver =intent.getStringExtra("messioninitiator");
+        Log.i("initiator",receiver);
         if (Status.equals("已接受")) {
             mcommit.setEnabled(false);
+            mchat.setEnabled(false);
             mcommit.setText("任务已被接受");
+
         } else {
             //点击mcommit接受任务
-
+            mchat.setEnabled(true);
             mcommit.setEnabled(true);
             mcommit.setText("接受任务");
+
+            /*
+             *  点击谈一谈按钮进入chat界面
+             */
+            mchat.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                    Intent intent=new Intent(MessionDetailsActivity.this, ChatActivity.class);
+                   // intent.putExtra("sendto",mman.getText().toString());
+                    intent.putExtra("sendto",receiver);
+                    startActivity(intent);
+                }
+            });
             mcommit.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -149,18 +166,18 @@ public class MessionDetailsActivity extends AppCompatActivity {
                                         else if ("success".equals(result))
                                         {//接受成功
 
-                                                Toast.makeText(MessionDetailsActivity.this, "接受任务成功", Toast.LENGTH_SHORT).show();
-                                                /*暂停1.5秒后跳转到登录界面*/
-                                                final Intent localIntent = new Intent(MessionDetailsActivity.this, MainActivity.class);
-                                                Timer timer = new Timer();
-                                                TimerTask tast = new TimerTask() {
-                                                    @Override
-                                                    public void run() {
-                                                        startActivity(localIntent);
-                                                    }
-                                                };
-                                                timer.schedule(tast, 1500);
-                                            }
+                                            Toast.makeText(MessionDetailsActivity.this, "接受任务成功", Toast.LENGTH_SHORT).show();
+                                            /*暂停1.5秒后跳转到登录界面*/
+                                            final Intent localIntent = new Intent(MessionDetailsActivity.this, MainActivity.class);
+                                            Timer timer = new Timer();
+                                            TimerTask tast = new TimerTask() {
+                                                @Override
+                                                public void run() {
+                                                    startActivity(localIntent);
+                                                }
+                                            };
+                                            timer.schedule(tast, 1500);
+                                        }
                                         else
                                         {
                                             Toast.makeText(MessionDetailsActivity.this, "未知错误", Toast.LENGTH_SHORT).show();
