@@ -108,7 +108,18 @@
             android:layout_height="50dp"
             android:layout_below="@id/login_password"
             android:layout_marginTop="40dp"
-            android:text="确认修改"
+            android:text="修改任务信息"
+            android:textSize="20sp"
+            android:background="@drawable/bt_login">
+
+        </Button>
+        <Button
+            android:id="@+id/md_comple"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_below="@id/login_password"
+            android:layout_marginTop="40dp"
+            android:text="完结任务"
             android:textSize="20sp"
             android:background="@drawable/bt_login">
 

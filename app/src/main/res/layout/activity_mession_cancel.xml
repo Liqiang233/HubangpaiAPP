@@ -1,232 +1,241 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-xmlns:app="http://schemas.android.com/apk/res-auto"
-xmlns:tools="http://schemas.android.com/tools"
-android:layout_width="match_parent"
-android:layout_height="match_parent"
-tools:context=".ui.task.MessionCancelActivity"
-    >
-<LinearLayout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="15dp">
+    tools:context=".ui.task.MessionCancelActivity"
+    >
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:padding="15dp"
-        android:orientation="horizontal">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="50dp"
-            android:padding="5dp"
-            android:text="任务名："
-            android:textColor="#000"
-            android:textSize="25dp" />
-        <TextView
-            android:id="@+id/myac_messionnname"
-            android:layout_width="wrap_content"
-            android:layout_height="50dp"
-            android:padding="5dp"
-            android:background="@drawable/et_username"
-            android:textColor="#000"
-            android:textSize="25dp"
-            android:hint="任务名"/>
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:padding="15dp"
-        android:orientation="horizontal">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="50dp"
-            android:padding="5dp"
-            android:text="任务类型："
-            android:textColor="#000"
-            android:textSize="25dp"
-            />
-        <TextView
-            android:id="@+id/myac_messionclass"
-            android:layout_width="wrap_content"
-            android:layout_height="50dp"
-            android:padding="5dp"
-            android:background="@drawable/et_username"
-            android:textColor="#000"
-            android:textSize="25dp"
-            android:hint="类型"/>
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:padding="15dp"
-        android:orientation="horizontal">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="50dp"
-            android:padding="5dp"
-            android:text="发布人："
-            android:textColor="#000"
-            android:textSize="25dp" />
-        <TextView
-            android:id="@+id/myac_messionninitiator"
-            android:layout_width="wrap_content"
-            android:layout_height="50dp"
-            android:padding="5dp"
-            android:background="@drawable/et_username"
-            android:textColor="#000"
-            android:textSize="25dp"
-            android:hint="发布人"/>
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:padding="15dp"
-        android:orientation="horizontal">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="50dp"
-            android:padding="5dp"
-            android:text="任务地址："
-            android:textColor="#000"
-            android:textSize="25dp" />
-        <TextView
-            android:id="@+id/myac_messionaddress"
-            android:layout_width="wrap_content"
-            android:layout_height="50dp"
-            android:padding="5dp"
-            android:background="@drawable/et_username"
-            android:textColor="#000"
-            android:textSize="25dp"
-            android:hint="任务地址"/>
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="15dp"
-        android:orientation="horizontal">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="50dp"
-            android:padding="5dp"
-            android:text="发起时间："
-            android:textColor="#000"
-            android:textSize="25dp" />
-        <TextView
-            android:id="@+id/myac_messionlaunchtime"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="5dp"
-            android:background="@drawable/et_username"
-            android:textColor="#000"
-            android:textSize="25dp"
-            android:hint="发布时间"/>
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:padding="15dp"
-        android:orientation="horizontal">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="50dp"
-            android:padding="5dp"
-            android:text="截止日期："
-            android:textColor="#000"
-            android:textSize="25dp" />
-        <TextView
-            android:id="@+id/myac_messionndeadline"
-            android:layout_width="wrap_content"
-            android:layout_height="50dp"
-            android:padding="5dp"
-            android:background="@drawable/et_username"
-            android:textColor="#000"
-            android:textSize="25dp"
-            android:hint="截止日期"/>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:padding="15dp"
-        android:orientation="horizontal">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="50dp"
-            android:padding="5dp"
-            android:text="任务状态："
-            android:textColor="#000"
-            android:textSize="25dp" />
-        <TextView
-            android:id="@+id/myac_messionnstatus"
-            android:layout_width="wrap_content"
-            android:layout_height="50dp"
-            android:padding="5dp"
-            android:background="@drawable/et_username"
-            android:textColor="#000"
-            android:textSize="25dp"
-            android:hint="任务状态"/>
-
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:padding="15dp"
-        android:orientation="horizontal">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="50dp"
-            android:padding="5dp"
-            android:text="酬劳："
-            android:textColor="#000"
-            android:textSize="25dp" />
-        <TextView
-            android:id="@+id/myac_messionpay"
-            android:layout_width="wrap_content"
-            android:layout_height="50dp"
-            android:padding="5dp"
-            android:background="@drawable/et_username"
-            android:hint="酬劳"
-            android:textColor="#000"
-            android:textSize="25sp"
-            />
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="15dp"
-        android:orientation="vertical">
-
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="50dp"
-            android:padding="5dp"
-            android:text="任务详情："
-            android:textColor="#000"
-            android:textSize="25sp" />
-        <TextView
-            android:id="@+id/myac_messionndetails"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="15dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:padding="15dp"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:padding="5dp"
+                android:text="任务名："
+                android:textColor="#000"
+                android:textSize="25dp" />
+            <TextView
+                android:id="@+id/myac_messionnname"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:padding="5dp"
+                android:background="@drawable/et_username"
+                android:textColor="#000"
+                android:textSize="25dp"
+                android:hint="任务名"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:padding="15dp"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:padding="5dp"
+                android:text="任务类型："
+                android:textColor="#000"
+                android:textSize="25dp"
+                />
+            <TextView
+                android:id="@+id/myac_messionclass"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:padding="5dp"
+                android:background="@drawable/et_username"
+                android:textColor="#000"
+                android:textSize="25dp"
+                android:hint="类型"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:padding="15dp"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:padding="5dp"
+                android:text="发布人："
+                android:textColor="#000"
+                android:textSize="25dp" />
+            <TextView
+                android:id="@+id/myac_messionninitiator"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:padding="5dp"
+                android:background="@drawable/et_username"
+                android:textColor="#000"
+                android:textSize="25dp"
+                android:hint="发布人"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:padding="15dp"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:padding="5dp"
+                android:text="任务地址："
+                android:textColor="#000"
+                android:textSize="25dp" />
+            <TextView
+                android:id="@+id/myac_messionaddress"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:padding="5dp"
+                android:background="@drawable/et_username"
+                android:textColor="#000"
+                android:textSize="25dp"
+                android:hint="任务地址"/>
+        </LinearLayout>
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/et_username"
-            android:hint="详情"
-            android:padding="5dp"
-            android:textColor="#000"
-            android:textSize="25sp" />
+            android:padding="15dp"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:padding="5dp"
+                android:text="发起时间："
+                android:textColor="#000"
+                android:textSize="25dp" />
+            <TextView
+                android:id="@+id/myac_messionlaunchtime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:background="@drawable/et_username"
+                android:textColor="#000"
+                android:textSize="25dp"
+                android:hint="发布时间"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:padding="15dp"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:padding="5dp"
+                android:text="截止日期："
+                android:textColor="#000"
+                android:textSize="25dp" />
+            <TextView
+                android:id="@+id/myac_messionndeadline"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:padding="5dp"
+                android:background="@drawable/et_username"
+                android:textColor="#000"
+                android:textSize="25dp"
+                android:hint="截止日期"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:padding="15dp"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:padding="5dp"
+                android:text="任务状态："
+                android:textColor="#000"
+                android:textSize="25dp" />
+            <TextView
+                android:id="@+id/myac_messionnstatus"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:padding="5dp"
+                android:background="@drawable/et_username"
+                android:textColor="#000"
+                android:textSize="25dp"
+                android:hint="任务状态"/>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:padding="15dp"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:padding="5dp"
+                android:text="酬劳："
+                android:textColor="#000"
+                android:textSize="25dp" />
+            <TextView
+                android:id="@+id/myac_messionpay"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:padding="5dp"
+                android:background="@drawable/et_username"
+                android:hint="酬劳"
+                android:textColor="#000"
+                android:textSize="25sp"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="15dp"
+            android:orientation="vertical">
 
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:padding="5dp"
+                android:text="任务详情："
+                android:textColor="#000"
+                android:textSize="25sp" />
+            <TextView
+                android:id="@+id/myac_messionndetails"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/et_username"
+                android:hint="详情"
+                android:padding="5dp"
+                android:textColor="#000"
+                android:textSize="25sp" />
+
+
+        </LinearLayout>
+        <Button
+            android:id="@+id/bt_cancel"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_below="@id/login_password"
+            android:layout_marginTop="40dp"
+            android:text="取消任务"
+            android:textSize="20sp"
+            android:background="@drawable/bt_cancel"
+            />
+        <Button
+            android:id="@+id/bt_comple"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_below="@id/login_password"
+            android:layout_marginTop="40dp"
+            android:text="发起完结申请"
+            android:textSize="20sp"
+            android:background="@drawable/bt_login"
+            />
     </LinearLayout>
-    <Button
-        android:id="@+id/bt_cancel"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_below="@id/login_password"
-        android:layout_marginTop="40dp"
-        android:text="取消任务"
-        android:textSize="20sp"
-        android:background="@drawable/bt_login"
-        />
-
-</LinearLayout>
 </ScrollView>

@@ -76,19 +76,32 @@
         </receiver>
 
         <activity android:name=".ui.notifications.activity.ChatActivity"/>
-        <activity android:name=".ui.task.MessionModifyActivity"/>
-        <activity android:name=".ui.task.MessionDetailsActivity" />
-        <activity android:name=".ui.task.MessionCancelActivity"/>
-        <activity android:name=".ui.task.PublishActivity" />
-        <activity android:name=".ui.home.ForgetpsdActivity"/>
-        <activity android:name=".ui.home.LoginActivity" />
-        <activity android:name=".ui.home.RegisterActivity" />
-        <activity android:name=".ui.home.Settings_SafetyActivity" />
-        <activity android:name=".ui.home.Settings_PayActivity" />
-        <activity android:name=".ui.home.Settings_CommonActivity" />
-        <activity android:name=".ui.home.WalletActivity" />
-        <activity android:name=".ui.home.PersonalinfoActivity" />
-        <activity android:name=".ui.home.SettingsActivity" />
+        <activity android:name=".ui.task.MessionModifyActivity"
+            android:windowSoftInputMode="adjustResize|stateHidden"   />
+        <activity android:name=".ui.task.MessionDetailsActivity"
+            android:windowSoftInputMode="adjustResize|stateHidden"   />
+        <activity android:name=".ui.task.MessionCancelActivity"
+            android:windowSoftInputMode="adjustResize|stateHidden"   />
+        <activity android:name=".ui.task.PublishActivity"
+            android:windowSoftInputMode="adjustResize|stateHidden"   />
+        <activity android:name=".ui.home.ForgetpsdActivity"
+            android:windowSoftInputMode="adjustResize|stateHidden"   />
+        <activity android:name=".ui.home.LoginActivity"
+            android:windowSoftInputMode="adjustResize|stateHidden"   />
+        <activity android:name=".ui.home.RegisterActivity"
+            android:windowSoftInputMode="adjustResize|stateHidden"   />
+        <activity android:name=".ui.home.Settings_SafetyActivity"
+            android:windowSoftInputMode="adjustResize|stateHidden"   />
+        <activity android:name=".ui.home.Settings_PayActivity"
+            android:windowSoftInputMode="adjustResize|stateHidden"   />
+        <activity android:name=".ui.home.Settings_CommonActivity"
+            android:windowSoftInputMode="adjustResize|stateHidden"   />
+        <activity android:name=".ui.home.WalletActivity"
+            android:windowSoftInputMode="adjustResize|stateHidden"   />
+        <activity android:name=".ui.home.PersonalinfoActivity"
+            android:windowSoftInputMode="adjustResize|stateHidden"   />
+        <activity android:name=".ui.home.SettingsActivity"
+            android:windowSoftInputMode="adjustResize|stateHidden"   />
         <activity android:name=".ui.task.MyPublishActivity"/>
         <activity android:name=".ui.task.MyAcceptActivity"/>
         <activity
