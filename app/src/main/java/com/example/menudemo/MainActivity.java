@@ -31,7 +31,8 @@ import java.util.HashMap;
 
 public class MainActivity extends AppCompatActivity {
 
-
+    //定义用户名全局变量
+    public static String username;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

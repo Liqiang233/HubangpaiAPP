@@ -50,11 +50,11 @@ dependencies {
     implementation files('libs/commons-logging-1.2.jar')
     implementation files('libs/ezmorph-1.0.6.jar')
     implementation files('libs/json-lib-2.4-jdk15.jar')
-    compile files('libs/commons-beanutils-1.9.3.jar')
-    compile files('libs/commons-collections-3.2.2.jar')
-    compile files('libs/commons-lang-2.6.jar')
-    compile files('libs/commons-logging-1.2.jar')
-    compile files('libs/ezmorph-1.0.6.jar')
-    compile files('libs/json-lib-2.4-jdk15.jar')
+    implementation files('libs/commons-beanutils-1.9.3.jar')
+    implementation files('libs/commons-collections-3.2.2.jar')
+    implementation files('libs/commons-lang-2.6.jar')
+    implementation files('libs/commons-logging-1.2.jar')
+    implementation files('libs/ezmorph-1.0.6.jar')
+    implementation files('libs/json-lib-2.4-jdk15.jar')
 
 }

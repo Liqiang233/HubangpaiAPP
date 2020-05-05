@@ -50,7 +50,7 @@ public class MessionDetailsActivity extends AppCompatActivity {
 
 
     public String result;
-    public String acceptUrl = HttpUtillConnection.Ya_URL + "AcceptTask";
+    public String acceptUrl = HttpUtillConnection.base_URL + "AcceptTask";
     String Acceptor,Status,id;
 
     @Override

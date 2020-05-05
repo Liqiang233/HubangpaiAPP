@@ -108,10 +108,11 @@ public class LoginActivity extends AppCompatActivity {
                         @Override
                         public void run() {
                             //    String url = HttpUtillConnection.BASE_URL+"/servlet/LoginServlet";
-                            String url = HttpUtillConnection.Ya_URL+"LoginUser";
+                            String url = HttpUtillConnection.base_URL+"LoginUser";
                             Map<String, String> params = new HashMap<String, String>();
                             String name = login_username.getText().toString();
                             String psd = login_password.getText().toString();
+                            username = new String (name);
                             params.put("USERID", name);
                             params.put("USERPSD", psd);
 

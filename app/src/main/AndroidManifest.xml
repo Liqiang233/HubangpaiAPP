@@ -2,6 +2,12 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.menudemo">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -10,22 +16,29 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ui.task.MessionModifyActivity"/>
+        <activity android:name=".ui.home.ChangeSignActivity"></activity>
+        <activity android:name=".ui.home.ChangeAddressActivity" />
+        <activity android:name=".ui.home.ChangeNickNameActivity" />
+        <activity android:name=".ui.task.MessionModifyActivity" />
         <activity android:name=".ui.task.MessionDetailsActivity" />
-        <activity android:name=".ui.task.MessionCancelActivity"/>
+        <activity android:name=".ui.task.MessionCancelActivity" />
         <activity android:name=".ui.task.PublishActivity" />
-        <activity android:name=".ui.home.ForgetpsdActivity"/>
+        <activity android:name=".ui.home.ForgetpsdActivity" />
         <activity android:name=".ui.home.LoginActivity" />
         <activity android:name=".ui.home.RegisterActivity" />
         <activity android:name=".ui.home.Settings_SafetyActivity" />
+        <activity android:name=".ui.home.ChangePassWordActivity" />
+        <activity android:name=".ui.home.ChangeEmailActivity" />
+        <activity android:name=".ui.home.ChangePhoneNumberActivity" />
+        <activity android:name=".ui.home.LandingRecordActivity" />
         <activity android:name=".ui.home.Settings_PayActivity" />
         <activity android:name=".ui.home.Settings_CommonActivity" />
         <activity android:name=".ui.task.TasklistActivity" />
         <activity android:name=".ui.home.WalletActivity" />
         <activity android:name=".ui.home.PersonalinfoActivity" />
         <activity android:name=".ui.home.SettingsActivity" />
-        <activity android:name=".ui.task.MyPublishActivity"/>
-        <activity android:name=".ui.task.MyAcceptActivity"/>
+        <activity android:name=".ui.task.MyPublishActivity" />
+        <activity android:name=".ui.task.MyAcceptActivity" />
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"
@@ -37,10 +50,5 @@
             </intent-filter>
         </activity>
     </application>
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
 
 </manifest>

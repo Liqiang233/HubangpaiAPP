@@ -23,13 +23,13 @@ public class HttpUtillConnection {
 
 
     public static String Ya_URL="http://192.168.1.7:8080/hubangpai/";
+    public static String Qiang_URL="http://192.168.2.143:8080/hubangpai/";
 
-
- public static String BASE_URL = "http://192.168.13.100:8080/hubangpai/LoginUser";
- public static String BASE_URL_Task="http://192.168.13.100:8080/hubangpai/PublishTask";
- public static String base_URL = "http://192.168.13.100:8080/hubangpai/";
- public static String BASE_URL_SearchTask="http://192.168.13.100:8080/hubangpai/SearchTask";
- public static String BASE_URL_ModifyTask="http://192.168.13.100:8080/hubangpai/ModifyTask";
+ public static String BASE_URL = "http://192.168.2.143:8080/hubangpai/LoginUser";
+ public static String BASE_URL_Task="http://192.168.2.143:8080/hubangpai/PublishTask";
+ public static String base_URL = "http://192.168.2.143:8080/hubangpai/";
+ public static String BASE_URL_SearchTask="http://192.168.2.143:8080/hubangpai/SearchTask";
+ public static String BASE_URL_ModifyTask="http://192.168.2.143:8080/hubangpai/ModifyTask";
 
 
 
@@ -56,7 +56,8 @@ public class HttpUtillConnection {
             writer.flush();
             writer.close();
             outputStream.close();
-
+            int f =connection.getResponseCode();
+            int d = HttpURLConnection.HTTP_OK;
             if(connection.getResponseCode() == HttpURLConnection.HTTP_OK){
                 BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
                 String temp;
