@@ -47,7 +47,7 @@ public class RegisterActivity extends AppCompatActivity {
 
 
     private String result;
-    private String registerUrl = HttpUtillConnection.Ya_URL + "RegisterUser";
+    private String registerUrl = HttpUtillConnection.base_URL + "RegisterUser";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

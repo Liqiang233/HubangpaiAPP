@@ -9,10 +9,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.menudemo.ui.home.LoginActivity;
-import com.example.menudemo.ui.notifications.NotificationsFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.hyphenate.chat.EMClient;
-import com.hyphenate.chat.EMOptions;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.NavController;
@@ -34,12 +31,11 @@ import java.util.HashMap;
 
 public class MainActivity extends AppCompatActivity {
 
-    private NotificationsFragment notificationsFragment;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         SharedPreferences getdataPreferences = getSharedPreferences("userInfo",
                 MODE_PRIVATE);
         // 读取数据，第一个参数是键值，第二个参数是找不到对应键值时的返回值
