@@ -33,9 +33,8 @@ import java.util.regex.Pattern;
    *  并定义了点击item的动作与传值。
    *  version 1.0
    *
-   *
-   *
    * version2.0  计划添加搜索功能
+   * 2.0已完成
  */
 public class tasklistcAdapter extends RecyclerView.Adapter<tasklistcAdapter.taskviewHolder> {
 

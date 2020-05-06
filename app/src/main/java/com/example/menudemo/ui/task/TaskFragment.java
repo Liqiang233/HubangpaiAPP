@@ -1,8 +1,10 @@
 package com.example.menudemo.ui.task;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.IBinder;
@@ -68,6 +70,8 @@ public class TaskFragment extends Fragment{
     private tasklistcAdapter taskAdapter;  //定义自己创建的Adapter
     public List<Task> taskList=new ArrayList<>();   //定义全部实体类
     public List<Task> list=new ArrayList<>();   ////定义符合搜索条件的数据
+    private SharedPreferences sp;
+    String Initiator=null;
 //    public RecyclerView layout;
 //    public MotionEvent mv;
 
@@ -78,7 +82,7 @@ public class TaskFragment extends Fragment{
                               @Nullable ViewGroup container,@Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_task,container,false);
         setHasOptionsMenu(true);//启用menu
-
+        sp = getActivity().getSharedPreferences("userInfo", Activity.MODE_PRIVATE);
 
         task_et_search = view.findViewById(R.id.task_et_sertext);
         mImgvDelete = view.findViewById(R.id.imgv_delete);
@@ -101,8 +105,12 @@ public   void initData()
         @Override
         public void run() {
             //    String url = HttpUtillConnection.BASE_URL+"/servlet/LoginServlet";
-
-            String result = HttpUtillConnection.getContextByHttp(url);
+            Initiator = sp.getString("id", null);
+            final Map<String, String> params = new HashMap<String, String>();
+          //  String result = HttpUtillConnection.getContextByHttp(url);
+            params.put("Initiator", Initiator);
+            params.put("Status", "待接受");
+            String result = HttpUtillConnection.getContextByHttp(url,params);
             Log.i("searchresult:", result);
             Message msg = new Message();
             msg.what = 0x12;

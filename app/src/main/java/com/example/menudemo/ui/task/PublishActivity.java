@@ -36,6 +36,12 @@ import java.util.Map;
 import java.util.TimeZone;
 
 public class PublishActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
+
+
+
+    //  String url = HttpUtillConnection.BASE_URL_Task_Ya;
+    String url = HttpUtillConnection.Ya_URL+"PublishTask";
+
     private Spinner mclass=null;
     private EditText mname=null;
     private EditText maddress=null;
@@ -100,7 +106,7 @@ public class PublishActivity extends AppCompatActivity implements AdapterView.On
                             String nowAsIOS = df.format(date);
                             LaunchTime = nowAsIOS;
 
-                            String url = HttpUtillConnection.BASE_URL_Task;
+
                             Map<String, String> params = new HashMap<String, String>();
                             params.put("MessionName", MessionName);
                             params.put("MessionType", MessionType);

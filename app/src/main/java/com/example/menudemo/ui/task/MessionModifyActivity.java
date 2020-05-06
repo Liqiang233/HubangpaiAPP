@@ -32,6 +32,15 @@ import java.util.Map;
 import java.util.TimeZone;
 
 public class MessionModifyActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
+
+
+    //String url = HttpUtillConnection.BASE_URL_ModifyTask;  @Tenda
+    String url = HttpUtillConnection.Ya_URL+"ModifyTask";   //@Ya
+    public String CompleUrl = HttpUtillConnection.Ya_URL+"CompleteTask";
+    // String url=                  //@liqiang
+
+
+
     private Spinner mclass=null;
     private EditText mname=null;
     private EditText maddress=null;
@@ -47,6 +56,8 @@ public class MessionModifyActivity extends AppCompatActivity implements AdapterV
     private String Price;
     private String Details;
     private String id;
+    private Button mcomple;
+    private String status;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,6 +70,7 @@ public class MessionModifyActivity extends AppCompatActivity implements AdapterV
         mcommit=findViewById(R.id.md_modify);
         mpay=findViewById(R.id.md_messionpay);
         mdetail=findViewById(R.id.md_messiondetails);
+        mcomple=findViewById(R.id.md_comple);
 
         //界面间传递数据
         Intent intent = getIntent();
@@ -84,7 +96,33 @@ public class MessionModifyActivity extends AppCompatActivity implements AdapterV
         mdetail.setText(intent.getStringExtra("messiondetails"));
         mpay.setText(intent.getStringExtra("messionprice"));
         mdeadline.setText(intent.getStringExtra("messiondeadline"));
+        status=intent.getStringExtra("messionstatus");
         id = intent.getStringExtra("messionid");
+        if (status.equals("完结申请中")) {
+            mpay.setEnabled(false);
+            mcommit.setEnabled(false);
+            mcomple.setEnabled(true);
+            mcomple.setText("完结任务");
+        } else if(status.equals("已完结")){
+            mclass.setEnabled(false);
+            mname.setEnabled(false);
+            mdeadline.setEnabled(false);
+            maddress.setEnabled(false);
+            mcommit.setEnabled(false);
+            mpay.setEnabled(false);
+            mdetail.setEnabled(false);
+            mcomple.setEnabled(false);
+            mcommit.setVisibility(View.GONE);
+            mcomple.setText("任务已完结");
+        }else if(status.equals("已接受")){
+            mpay.setEnabled(false);
+            mcommit.setEnabled(true);
+            mcomple.setEnabled(false);
+        }else{
+            mcommit.setEnabled(true);
+            mcomple.setEnabled(false);
+            mcomple.setText("任务尚未完成");
+        }
         mcommit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -99,7 +137,7 @@ public class MessionModifyActivity extends AppCompatActivity implements AdapterV
                     @Override
                     public void run() {
 
-                        String url = HttpUtillConnection.BASE_URL_ModifyTask;
+
                         Map<String, String> params = new HashMap<String, String>();
                         params.put("MesionID", id);
                         params.put("MessionName", MessionName);
@@ -144,6 +182,64 @@ public class MessionModifyActivity extends AppCompatActivity implements AdapterV
 
                                     } else if ("fail".equals(result)) {
                                         Toast.makeText(MessionModifyActivity.this, "修改失败", Toast.LENGTH_SHORT).show();
+
+                                    }
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                }
+                            }
+                        }
+                    };
+                }).start();
+
+            }
+        });
+        mcomple.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+
+                        Map<String, String> params = new HashMap<String, String>();
+                        params.put("MessionID", id);
+                        params.put("Status","已完结");
+                        String result = HttpUtillConnection.getContextByHttp(CompleUrl, params);
+                        Log.i("===========", result.toString());
+                        Message msg = new Message();
+                        msg.what = 0x12;
+                        Bundle data = new Bundle();
+                        data.putString("result", result);
+                        Log.i("*********************", result.toString());
+                        msg.setData(data);
+                        hander.sendMessage(msg);
+
+                    }
+
+                    @SuppressLint("HandlerLeak")
+                    Handler hander = new Handler() {
+                        @Override
+                        public void handleMessage(Message msg) {
+                            if (msg.what == 0x12) {
+                                Bundle data = msg.getData();
+                                String key = data.getString("result");//得到json返回的json
+                                if (key != null && key.startsWith("\ufeff")) {
+                                    key = key.substring(1);
+                                }
+                                try {
+                                    JSONObject json = new JSONObject(key);
+                                    String result = (String) json.get("result");
+                                    if ("success".equals(result)) {
+                                        //页面跳转
+                                        Intent intent = new Intent();
+                                        Bundle bundle = new Bundle();
+                                        intent.putExtras(bundle);
+                                        intent.setClass(context, MainActivity.class);//跳转到app主界面
+                                        startActivity(intent);
+                                        Toast.makeText(MessionModifyActivity.this, "完结成功", Toast.LENGTH_SHORT).show();
+
+                                    } else if ("fail".equals(result)) {
+                                        Toast.makeText(MessionModifyActivity.this, "完结失败", Toast.LENGTH_SHORT).show();
 
                                     }
                                 } catch (JSONException e) {

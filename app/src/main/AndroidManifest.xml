@@ -1,14 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.menudemo">
-
+    <!-- 网络 -->
     <uses-permission android:name="android.permission.INTERNET" />
+    <!-- 访问网络状态 -->
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.INTERNET" />
+    <!-- 震动 -->
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <!-- 录音 -->
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <!-- 摄像头 -->
+    <uses-permission android:name="android.permission.CAMERA" />
+    <!-- 写入外部存储 -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <!-- 访问精确定位 -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <!-- 访问WIFI状态 -->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <!--唤醒锁屏-->
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <!-- 修改音频设置 -->
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+    <!-- 读取手机状态 -->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <!-- 读取联系人 -->
+    <uses-permission android:name="android.permission.READ_CONTACTS"/>
+    <!-- Demo新添加的一些属性 -->
+    <!-- 访问GMail账户列表 -->
+    <uses-permission android:name="android.permission.GET_ACCOUNTS"/>
+    <!-- 使用证书 -->
+    <uses-permission android:name="android.permission.USE_CREDENTIALS"/>
+    <!-- 管理账户 -->
+    <uses-permission android:name="android.permission.MANAGE_ACCOUNTS"/>
+    <!-- 验证账户 -->
+    <uses-permission android:name="android.permission.AUTHENTICATE_ACCOUNTS"/>
+    <!-- 连续广播（允许一个程序收到广播后快速收到下一个广播） -->
+    <uses-permission android:name="android.permission.BROADCAST_STICKY"/>
+
+
 
     <application
+
+        android:name = ".ECApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -16,29 +52,58 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ui.home.ChangeSignActivity"></activity>
-        <activity android:name=".ui.home.ChangeAddressActivity" />
-        <activity android:name=".ui.home.ChangeNickNameActivity" />
-        <activity android:name=".ui.task.MessionModifyActivity" />
-        <activity android:name=".ui.task.MessionDetailsActivity" />
-        <activity android:name=".ui.task.MessionCancelActivity" />
-        <activity android:name=".ui.task.PublishActivity" />
-        <activity android:name=".ui.home.ForgetpsdActivity" />
-        <activity android:name=".ui.home.LoginActivity" />
-        <activity android:name=".ui.home.RegisterActivity" />
-        <activity android:name=".ui.home.Settings_SafetyActivity" />
-        <activity android:name=".ui.home.ChangePassWordActivity" />
-        <activity android:name=".ui.home.ChangeEmailActivity" />
-        <activity android:name=".ui.home.ChangePhoneNumberActivity" />
-        <activity android:name=".ui.home.LandingRecordActivity" />
-        <activity android:name=".ui.home.Settings_PayActivity" />
-        <activity android:name=".ui.home.Settings_CommonActivity" />
-        <activity android:name=".ui.task.TasklistActivity" />
-        <activity android:name=".ui.home.WalletActivity" />
-        <activity android:name=".ui.home.PersonalinfoActivity" />
-        <activity android:name=".ui.home.SettingsActivity" />
-        <activity android:name=".ui.task.MyPublishActivity" />
-        <activity android:name=".ui.task.MyAcceptActivity" />
+        <meta-data
+            android:name="EASEMOB_APPKEY"
+            android:value="1121200427010711#hubangpai" />
+        <!-- 设置环信应用的AppKey -->
+        <!-- 声明SDK所需的service SDK核心功能-->
+        <service android:name="com.hyphenate.chat.EMChatService" android:exported="true"/>
+        <service android:name="com.hyphenate.chat.EMJobService"
+            android:permission="android.permission.BIND_JOB_SERVICE"
+            android:exported="true"
+            />
+        <!-- 声明SDK所需的receiver -->
+        <receiver android:name="com.hyphenate.chat.EMMonitorReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.PACKAGE_REMOVED"/>
+                <data android:scheme="package"/>
+            </intent-filter>
+            <!-- 可选filter -->
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+                <action android:name="android.intent.action.USER_PRESENT" />
+            </intent-filter>
+        </receiver>
+
+        <activity android:name=".ui.notifications.activity.ChatActivity"/>
+        <activity android:name=".ui.task.MessionModifyActivity"
+            android:windowSoftInputMode="adjustResize|stateHidden"   />
+        <activity android:name=".ui.task.MessionDetailsActivity"
+            android:windowSoftInputMode="adjustResize|stateHidden"   />
+        <activity android:name=".ui.task.MessionCancelActivity"
+            android:windowSoftInputMode="adjustResize|stateHidden"   />
+        <activity android:name=".ui.task.PublishActivity"
+            android:windowSoftInputMode="adjustResize|stateHidden"   />
+        <activity android:name=".ui.home.ForgetpsdActivity"
+            android:windowSoftInputMode="adjustResize|stateHidden"   />
+        <activity android:name=".ui.home.LoginActivity"
+            android:windowSoftInputMode="adjustResize|stateHidden"   />
+        <activity android:name=".ui.home.RegisterActivity"
+            android:windowSoftInputMode="adjustResize|stateHidden"   />
+        <activity android:name=".ui.home.Settings_SafetyActivity"
+            android:windowSoftInputMode="adjustResize|stateHidden"   />
+        <activity android:name=".ui.home.Settings_PayActivity"
+            android:windowSoftInputMode="adjustResize|stateHidden"   />
+        <activity android:name=".ui.home.Settings_CommonActivity"
+            android:windowSoftInputMode="adjustResize|stateHidden"   />
+        <activity android:name=".ui.home.WalletActivity"
+            android:windowSoftInputMode="adjustResize|stateHidden"   />
+        <activity android:name=".ui.home.PersonalinfoActivity"
+            android:windowSoftInputMode="adjustResize|stateHidden"   />
+        <activity android:name=".ui.home.SettingsActivity"
+            android:windowSoftInputMode="adjustResize|stateHidden"   />
+        <activity android:name=".ui.task.MyPublishActivity"/>
+        <activity android:name=".ui.task.MyAcceptActivity"/>
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"
@@ -49,6 +114,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <uses-library android:name="org.apache.http.legacy" android:required="false"/>
     </application>
+
+
 
 </manifest>

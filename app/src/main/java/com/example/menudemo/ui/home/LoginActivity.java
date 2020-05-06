@@ -18,6 +18,8 @@ import android.widget.Toast;
 import com.example.menudemo.MainActivity;
 import com.example.menudemo.R;
 import com.example.menudemo.ui.utills.HttpUtillConnection;
+import com.hyphenate.EMCallBack;
+import com.hyphenate.chat.EMClient;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -33,6 +35,8 @@ import java.util.Map;
 
 public class LoginActivity extends AppCompatActivity {
     //定义
+    String url = HttpUtillConnection.Ya_URL+"LoginUser";
+
     private Button bt_login;
     private EditText login_username;
     private EditText login_password;
@@ -104,15 +108,47 @@ public class LoginActivity extends AppCompatActivity {
                 }
                 else  //账号密码 不为空
                 {
+                     String  user = login_username.getText().toString().trim();
+                     String psd = login_password.getText().toString().trim();
+                    EMClient.getInstance().login(user, psd, new EMCallBack() {
+                        @Override
+                        public void onSuccess() {
+                            Log.i("loginnote","loginhuanxin success");
+                            runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    // 加载所有会话到内存
+                                    EMClient.getInstance().chatManager().loadAllConversations();
+                                }
+                            });
+                        }
+
+                        @Override
+                        public void onError(int i, String s) {
+
+                            Log.d("lzan13", "登录失败 Error code:" + i + ", message:" + s);
+
+                        }
+
+                        @Override
+                        public void onProgress(int i, String s) {
+
+                        }
+                    });
+
+
                     new Thread(new Runnable() {
                         @Override
                         public void run() {
                             //    String url = HttpUtillConnection.BASE_URL+"/servlet/LoginServlet";
-                            String url = HttpUtillConnection.base_URL+"LoginUser";
                             Map<String, String> params = new HashMap<String, String>();
                             String name = login_username.getText().toString();
                             String psd = login_password.getText().toString();
-                            username = new String (name);
+
+
+
+
+
                             params.put("USERID", name);
                             params.put("USERPSD", psd);
 
