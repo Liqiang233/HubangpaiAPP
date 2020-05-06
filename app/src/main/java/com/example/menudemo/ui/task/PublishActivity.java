@@ -101,7 +101,7 @@ public class PublishActivity extends AppCompatActivity implements AdapterView.On
                             /*时间戳转换成IOS8601字符串*/
                             Date date = new Date(time);
                             TimeZone tz = TimeZone.getTimeZone("Asia/Beijing");
-                            DateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
+                            DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm");
                             df.setTimeZone(tz);
                             String nowAsIOS = df.format(date);
                             LaunchTime = nowAsIOS;

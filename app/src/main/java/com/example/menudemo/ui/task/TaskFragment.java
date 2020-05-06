@@ -50,11 +50,11 @@ import java.util.List;
 import java.util.Map;
 
 /*
-    * author shijizhe
-    * note: 发送http请求
-    * 接收eclipse传回来的数据库数据
-    * 并将数据传到对应的Adapter
-    *
+ * author shijizhe
+ * note: 发送http请求
+ * 接收eclipse传回来的数据库数据
+ * 并将数据传到对应的Adapter
+ *
  */
 public class TaskFragment extends Fragment{
 
@@ -89,9 +89,9 @@ public class TaskFragment extends Fragment{
         recy=view.findViewById(R.id.task_rec);
 
 
-         initData();
-         refreshUI();
-         setListener();
+        initData();
+        refreshUI();
+        setListener();
 
         return view;
 
@@ -99,130 +99,130 @@ public class TaskFragment extends Fragment{
 
     }
     //初始化数据
-public   void initData()
-{
-    new Thread(new Runnable() {
-        @Override
-        public void run() {
-            //    String url = HttpUtillConnection.BASE_URL+"/servlet/LoginServlet";
-            Initiator = sp.getString("id", null);
-            final Map<String, String> params = new HashMap<String, String>();
-          //  String result = HttpUtillConnection.getContextByHttp(url);
-            params.put("Initiator", Initiator);
-            params.put("Status", "待接受");
-            String result = HttpUtillConnection.getContextByHttp(url,params);
-            Log.i("searchresult:", result);
-            Message msg = new Message();
-            msg.what = 0x12;
-            Bundle data = new Bundle();   //bundle 主要用于app内传递数据，以键值对的形势存在
-            data.putString("result", result);
-            msg.setData(data);
-            hander.sendMessage(msg);
-
-        }
-
-        @SuppressLint("HandlerLeak")
-        Handler hander = new Handler() {
+    public   void initData()
+    {
+        new Thread(new Runnable() {
             @Override
-            public void handleMessage(Message msg) {
-                if (msg.what == 0x12) {
-                    Bundle data = msg.getData();
-                    String key = data.getString("result");//得到返回的json
-                    if (key != null && key.startsWith("\ufeff")) //去掉bom头
-                    {
-                        key = key.substring(1);
-                    }
-                    try {
-                        JSONArray js = JSONArray.fromObject(key);
-                        int i;
-                        for(i=0;i<js.size();i++)
+            public void run() {
+                //    String url = HttpUtillConnection.BASE_URL+"/servlet/LoginServlet";
+
+                Initiator = sp.getString("id", null);
+                final Map<String, String> params = new HashMap<String, String>();
+                params.put("Initiator", Initiator);
+                params.put("Status", "待接受");
+                String result = HttpUtillConnection.getContextByHttp(url,params);
+                Log.i("searchresult:", result);
+                Message msg = new Message();
+                msg.what = 0x12;
+                Bundle data = new Bundle();   //bundle 主要用于app内传递数据，以键值对的形势存在
+                data.putString("result", result);
+                msg.setData(data);
+                hander.sendMessage(msg);
+
+            }
+
+            @SuppressLint("HandlerLeak")
+            Handler hander = new Handler() {
+                @Override
+                public void handleMessage(Message msg) {
+                    if (msg.what == 0x12) {
+                        Bundle data = msg.getData();
+                        String key = data.getString("result");//得到返回的json
+                        if (key != null && key.startsWith("\ufeff")) //去掉bom头
                         {
-                            String messionid = js.getJSONObject(i).getString("messionid");
-                            String messionname =js.getJSONObject(i).getString("messionname");
-                            String messiontype = js.getJSONObject(i).getString("messiontype");
-                            String initiator= js.getJSONObject(i).getString("initiator");
-                            String price = js.getJSONObject(i).getString("price");
-                            String address = js.getJSONObject(i).getString("address");
-                            String deadline = js.getJSONObject(i).getString("deadline");
-                            String launchtime = js.getJSONObject(i).getString("launchtime");
-                            String status=js.getJSONObject(i).getString("status");
-                            String details=js.getJSONObject(i).getString("details");
-                            String acceptor;
-                            if(js.getJSONObject(i).has("acceptor"))
-                            {
-                                acceptor = js.getJSONObject(i).getString("acceptor");
-
-                            }else
-                            {
-                                acceptor= "";
-                            }
-                            Task task = new Task(messionid,messionname,messiontype,initiator,acceptor,price,address,deadline,launchtime,status,details);
-
-                            taskList.add(task);
-
-
-                            Log.i("messionid:",messionid);
-                            Log.i("taskList:",taskList.toString());
-                            //创建adapter
-                            Log.i("zhutaskList:",taskList.toString());
-
-                            //初始化adapter
-                            taskAdapter = new tasklistcAdapter(getActivity(),list);
-                            //set adapter
-                            recy.setAdapter(taskAdapter);
-                            //设置layoutManager,可以设置显示效果，是线性布局、grid布局，还是瀑布流布局
-                            //参数是：上下文、列表方向（横向还是纵向）、是否倒叙
-                            recy.setLayoutManager(new LinearLayoutManager(TaskFragment.this.getActivity()));
-                            //初次进入程序时 展示全部数据
-
+                            key = key.substring(1);
                         }
+                        try {
+                            JSONArray js = JSONArray.fromObject(key);
+                            int i;
+                            for(i=0;i<js.size();i++)
+                            {
+                                String messionid = js.getJSONObject(i).getString("messionid");
+                                String messionname =js.getJSONObject(i).getString("messionname");
+                                String messiontype = js.getJSONObject(i).getString("messiontype");
+                                String initiator= js.getJSONObject(i).getString("initiator");
+                                String price = js.getJSONObject(i).getString("price");
+                                String address = js.getJSONObject(i).getString("address");
+                                String deadline = js.getJSONObject(i).getString("deadline");
+                                String launchtime = js.getJSONObject(i).getString("launchtime");
+                                String status=js.getJSONObject(i).getString("status");
+                                String details=js.getJSONObject(i).getString("details");
+                                String acceptor;
+                                if(js.getJSONObject(i).has("acceptor"))
+                                {
+                                    acceptor = js.getJSONObject(i).getString("acceptor");
 
-                        list.addAll(taskList);
+                                }else
+                                {
+                                    acceptor= "";
+                                }
+                                Task task = new Task(messionid,messionname,messiontype,initiator,acceptor,price,address,deadline,launchtime,status,details);
+
+                                taskList.add(task);
+
+
+                                Log.i("messionid:",messionid);
+                                Log.i("taskList:",taskList.toString());
+                                //创建adapter
+                                Log.i("zhutaskList:",taskList.toString());
+
+                                //初始化adapter
+                                taskAdapter = new tasklistcAdapter(getActivity(),list);
+                                //set adapter
+                                recy.setAdapter(taskAdapter);
+                                //设置layoutManager,可以设置显示效果，是线性布局、grid布局，还是瀑布流布局
+                                //参数是：上下文、列表方向（横向还是纵向）、是否倒叙
+                                recy.setLayoutManager(new LinearLayoutManager(TaskFragment.this.getActivity()));
+                                //初次进入程序时 展示全部数据
+
+                            }
+
+                            list.addAll(taskList);
 
 
 
-                    } catch (Exception e) {
-                        e.printStackTrace();
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
                     }
                 }
-            }
-        };
+            };
 
-    }).start();
-}
+        }).start();
+    }
 
 
-  //设置搜索框监听
+    //设置搜索框监听
     private  void setListener()
     {
 
-         task_et_search.addTextChangedListener(new TextWatcher() {
-             @Override
-             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+        task_et_search.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
-             }
+            }
 
-             @Override
-             public void onTextChanged(CharSequence s, int start, int before, int count) {
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
 
-             }
-             //每次edittext内容改变时执行 控制删除按钮的显示隐藏
-             @Override
-             public void afterTextChanged(Editable editable) {
-                 if (editable.length() == 0) {
-                     mImgvDelete.setVisibility(View.GONE);
-                 } else {
-                     mImgvDelete.setVisibility(View.VISIBLE);
-                 }
-                 //匹配文字 变色
-                 doChangeColor(editable.toString().trim());
-             }
-         });
+            }
+            //每次edittext内容改变时执行 控制删除按钮的显示隐藏
+            @Override
+            public void afterTextChanged(Editable editable) {
+                if (editable.length() == 0) {
+                    mImgvDelete.setVisibility(View.GONE);
+                } else {
+                    mImgvDelete.setVisibility(View.VISIBLE);
+                }
+                //匹配文字 变色
+                doChangeColor(editable.toString().trim());
+            }
+        });
         //删除按钮的监听
         mImgvDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               task_et_search.setText("");
+                task_et_search.setText("");
             }
         });
 
@@ -233,31 +233,31 @@ public   void initData()
      * text:需要变色的字
      */
     private void doChangeColor(String text) {
-           list.clear();
+        list.clear();
         //不需要匹配 把所有数据都传进来 不需要变色
-           if(text.equals(""))
-           {
-               list.addAll(taskList);
-               //防止匹配过文字之后点击删除按钮 字体仍然变色的问题
-               taskAdapter.setText(null);
-               refreshUI();
-           }
-           else //如果edittext里面有数据 则根据edittext里面的数据进行匹配
-           // 用contains判断是否包含该条数据 包含的话则加入到list中
-           {
+        if(text.equals(""))
+        {
+            list.addAll(taskList);
+            //防止匹配过文字之后点击删除按钮 字体仍然变色的问题
+            taskAdapter.setText(null);
+            refreshUI();
+        }
+        else //如果edittext里面有数据 则根据edittext里面的数据进行匹配
+        // 用contains判断是否包含该条数据 包含的话则加入到list中
+        {
 
-               for(int i=0;i<taskList.size();i++)
-               {
-                   String str=taskList.get(i).getMessionname();
-                   if(str.contains(text))
-                   {
-                       list.add(taskList.get(i));
-                   }
-               }
+            for(int i=0;i<taskList.size();i++)
+            {
+                String str=taskList.get(i).getMessionname();
+                if(str.contains(text))
+                {
+                    list.add(taskList.get(i));
+                }
+            }
 
-           }
-           taskAdapter.setText(text);
-           refreshUI();
+        }
+        taskAdapter.setText(text);
+        refreshUI();
     }
     /**
      * 刷新UI
@@ -286,7 +286,7 @@ public   void initData()
         super.onCreateOptionsMenu(menu, inflater);
         inflater.inflate(R.menu.top_task_menu,menu);
     }
-     //给菜单按钮定义点击动作
+    //给菜单按钮定义点击动作
     public boolean onOptionsItemSelected(MenuItem item) {
         Intent intent;
         switch (item.getItemId()){

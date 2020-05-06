@@ -104,6 +104,11 @@
             android:windowSoftInputMode="adjustResize|stateHidden"   />
         <activity android:name=".ui.task.MyPublishActivity"/>
         <activity android:name=".ui.task.MyAcceptActivity"/>
+        <activity android:name=".ui.home.ChangeAddressActivity"/>
+        <activity android:name=".ui.home.ChangeNickNameActivity"/>
+        <activity android:name=".ui.home.ChangePassWordActivity"/>
+        <activity android:name=".ui.home.ChangeSignActivity"/>
+
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"

@@ -6,48 +6,195 @@
     android:layout_height="match_parent"
     tools:context=".ui.home.Settings_PayActivity">
 
-
-
-
     <LinearLayout
-        android:layout_width="413dp"
-        android:layout_height="425dp"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
+        <TextView
+            android:id="@+id/back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="    &#060;"
+            android:textSize="30dp"/>
+    </LinearLayout>
 
-        <Button
-            android:id="@+id/settings_safety_button_phonenum"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:gravity="center">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="安全中心"
+            android:textSize="30dp"/>
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingTop="50dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="     账号"
+            android:textSize="15dp"
+            android:paddingBottom="10dp"/>
+        <LinearLayout
+            android:id="@+id/password"
             android:layout_width="match_parent"
-            android:layout_height="55dp"
-            android:text="手机号" />
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+            <TextView
+                android:id="@+id/PassWordTitlle"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="修改登陆密码"
+                android:textSize="20dp"/>
 
-        <Button
-            android:id="@+id/settings_safety_button_psdsetting"
+            <TextView
+                android:id="@+id/PassWordButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="修改 > "
+                android:textSize="20dp"/>
+        </LinearLayout>
+
+        <TextView
             android:layout_width="match_parent"
-            android:layout_height="55dp"
-            android:text="密码设置" />
+            android:layout_height="wrap_content"
+            />
 
-        <Button
-            android:id="@+id/settings_safety_button_mailsetting"
+        <LinearLayout
+            android:id="@+id/Emal"
             android:layout_width="match_parent"
-            android:layout_height="55dp"
-            android:text="邮箱设置" />
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+            <TextView
+                android:id="@+id/Emailitlle"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="修改绑定邮箱"
+                android:textSize="20dp"/>
 
-        <Button
-            android:id="@+id/settings_safety_button_lognote"
+            <TextView
+                android:id="@+id/EmailButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="绑定/修改 > "
+                android:textSize="20dp"/>
+        </LinearLayout>
+
+        <TextView
             android:layout_width="match_parent"
-            android:layout_height="55dp"
-            android:text="登陆记录查询" />
+            android:layout_height="wrap_content"
+            />
 
-        <Button
-            android:id="@+id/settings_safety_button_destory"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="55dp"
-            android:text="注销账号" />
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:id="@+id/PhoneNumber"
+            >
+            <TextView
+                android:id="@+id/NumTitlle"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="修改手机号码"
+                android:textSize="20dp"/>
 
+            <TextView
+                android:id="@+id/NumButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="手机号码演示 > "
+                android:textSize="20dp"/>
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="     安全"
+            android:textSize="15dp"
+            android:paddingBottom="10dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:id="@+id/LonginText"
+            >
+            <TextView
+                android:id="@+id/LandingRecordTittle"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="最近登陆记录"
+                android:textSize="20dp"/>
+
+            <TextView
+                android:id="@+id/LandingRecordButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="> "
+                android:textSize="20dp"/>
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:id="@+id/DeleteCount"
+            >
+            <TextView
+
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="注销账号"
+                android:textSize="20dp"/>
+
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="注销后无法恢复，请谨慎操作"
+                android:textSize="15dp"/>
+
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" > "
+                android:textSize="20dp"/>
+        </LinearLayout>
 
     </LinearLayout>
 
