@@ -41,7 +41,7 @@ public class MyPublishActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_publish);
         sp = getSharedPreferences(USERINFO , MODE_PRIVATE);
-
+        getSupportActionBar().setTitle("发布的任务");
         new Thread(new Runnable() {
             @Override
             public void run() {

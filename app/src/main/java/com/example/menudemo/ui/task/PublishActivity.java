@@ -65,6 +65,9 @@ public class PublishActivity extends AppCompatActivity implements AdapterView.On
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_publish);
+
+        getSupportActionBar().setTitle("发布任务");
+
         context = getApplicationContext();
         sp = getSharedPreferences(USERINFO , MODE_PRIVATE);
         mclass=findViewById(R.id.sp_messionclass);

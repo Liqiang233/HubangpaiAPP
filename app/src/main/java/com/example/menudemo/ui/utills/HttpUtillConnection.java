@@ -22,7 +22,7 @@ import java.util.Map;
 public class HttpUtillConnection {
 
 
-    public static String Ya_URL="http://192.168.1.7:8080/hubangpai/";
+    public static String Ya_URL="http://192.168.1.2:8080/hubangpai/";
     public static String Qiang_URL="http://192.168.2.143:8080/hubangpai/";
 
  public static String BASE_URL = "http://192.168.2.143:8080/hubangpai/LoginUser";
