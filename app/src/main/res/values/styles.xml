@@ -16,5 +16,12 @@
         <attr name="cvsListSecondaryTextSize" format="dimension"/>
         <attr name="cvsListTimeTextSize" format="dimension"/>
     </declare-styleable>
+    <style name="date_picker_dialog" parent="android:style/Theme.Dialog">
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowBackground">@color/date_picker_bg</item>
+    </style>
 
 </resources>
