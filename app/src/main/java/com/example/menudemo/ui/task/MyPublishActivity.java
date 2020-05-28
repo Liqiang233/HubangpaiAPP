@@ -108,7 +108,6 @@ public class MyPublishActivity extends AppCompatActivity {
                                 LinearLayoutManager layoutManager = new LinearLayoutManager(MyPublishActivity.this);
                                 recy.setLayoutManager(layoutManager);
                                 //创建adapter
-                                Log.i("mytaskList:",taskList.toString());
                                 taskAdapter = new MyPublishAdapter(MyPublishActivity.this,taskList);
                                 //set adapter
                                 recy.setAdapter(taskAdapter);

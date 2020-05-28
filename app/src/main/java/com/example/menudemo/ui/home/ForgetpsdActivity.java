@@ -47,7 +47,7 @@ public class ForgetpsdActivity extends AppCompatActivity {
 
 
     private String result;
-    private String findpsdUrl = HttpUtillConnection.base_URL + "FindpsdUser";
+    private String findpsdUrl = HttpUtillConnection.Ya_URL + "FindpsdUser";
     private void init() {
         et_login_username = (EditText) findViewById(R.id.forgetpsd_edittext_num);
         et_login_password = (EditText) findViewById(R.id.forgetpsd_edittext_psw);

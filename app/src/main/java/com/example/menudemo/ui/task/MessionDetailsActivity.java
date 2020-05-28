@@ -49,7 +49,7 @@ public class MessionDetailsActivity extends AppCompatActivity {
     private TextView mstatus = null;
     private SharedPreferences sp;
     public String result;
-    public String acceptUrl = HttpUtillConnection.base_URL + "AcceptTask";
+    public String acceptUrl = HttpUtillConnection.Ya_URL + "AcceptTask";
     String Acceptor,Status,id;
     String receiver;
 

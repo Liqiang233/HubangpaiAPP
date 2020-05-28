@@ -38,50 +38,51 @@
     <LinearLayout
         android:layout_width="407dp"
         android:layout_height="452dp"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
 
         <Button
             android:id="@+id/settings_button_paymentsettings"
             android:layout_width="match_parent"
             android:layout_height="55dp"
-            android:text="支付设置"
-            android:layout_marginTop="40dp"/>
+            android:layout_marginTop="40dp"
+            android:text="支付设置" />
 
         <Button
             android:id="@+id/settings_button_securitycenter"
             android:layout_width="match_parent"
             android:layout_height="55dp"
-            android:text="安全中心"
             android:layout_marginTop="10dp"
-            />
+            android:text="安全中心" />
 
         <Button
             android:id="@+id/settings_button_commonsettings"
             android:layout_width="match_parent"
             android:layout_height="55dp"
-            android:text="通用"
-            android:layout_marginTop="10dp"/>
+            android:layout_marginTop="10dp"
+            android:text="通用" />
 
         <Button
             android:id="@+id/settings_button_helpment"
             android:layout_width="match_parent"
             android:layout_height="55dp"
-            android:text="帮助"
-            android:layout_marginTop="10dp"/>
+            android:layout_marginTop="10dp"
+            android:text="帮助" />
 
         <Button
             android:id="@+id/settings_button_about"
             android:layout_width="match_parent"
             android:layout_height="55dp"
-            android:text="关于互帮派"
-            android:layout_marginTop="10dp"/>
+            android:layout_marginTop="10dp"
+            android:text="关于互帮派" />
 
         <Button
             android:id="@+id/settings_button_exit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="退出账号"
-            android:layout_marginTop="10dp"/>
+            android:layout_marginTop="10dp"
+            android:text="退出账号" />
     </LinearLayout>
 
 

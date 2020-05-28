@@ -18,6 +18,8 @@ import android.widget.Toast;
 import com.example.menudemo.MainActivity;
 import com.example.menudemo.R;
 import com.example.menudemo.ui.utills.HttpUtillConnection;
+import com.hyphenate.EMCallBack;
+import com.hyphenate.chat.EMClient;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -92,6 +94,22 @@ public class SettingsActivity extends AppCompatActivity {
         exitaccount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                EMClient.getInstance().logout(false, new EMCallBack() {
+                    @Override
+                    public void onSuccess() {
+                        Log.i("huanxinlogout","success");
+                    }
+
+                    @Override
+                    public void onError(int code, String error) {
+                        Log.i("huanxinlogout","fail");
+                    }
+
+                    @Override
+                    public void onProgress(int progress, String status) {
+
+                    }
+                });
                 editor.clear();
                 editor.commit();
                 Intent intent = new Intent(SettingsActivity.this,LoginActivity.class);

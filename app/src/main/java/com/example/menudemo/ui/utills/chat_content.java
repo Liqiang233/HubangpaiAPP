@@ -1,7 +1,7 @@
 package com.example.menudemo.ui.utills;
 
 /**
- * Created by xiatom on 2019/4/24.
+ * Created by shijizhe on 2020.4
  */
 
 public class chat_content {

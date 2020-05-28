@@ -38,13 +38,16 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.TimeZone;
-
+/*
+  *  发布任务
+ */
 public class PublishActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener,View.OnClickListener{
 
 
 
     //  String url = HttpUtillConnection.BASE_URL_Task_Ya;
-    String url = HttpUtillConnection.gtd_URL+"PublishTask";
+    //String url = HttpUtillConnection.gtd_URL+"PublishTask";
+    String url = HttpUtillConnection.Ya_URL+"PublishTask";
 
     private Spinner mclass=null;
     private EditText mname=null;

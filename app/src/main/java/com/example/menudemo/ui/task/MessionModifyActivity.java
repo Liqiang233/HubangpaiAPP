@@ -112,6 +112,7 @@ public class MessionModifyActivity extends AppCompatActivity implements AdapterV
         mdeadline=intent.getStringExtra("messiondeadline");
         status=intent.getStringExtra("messionstatus");
         id = intent.getStringExtra("messionid");
+        Log.i("xiugaiid",id);
         initTimerPicker();
         mTvSelectedTime.setOnClickListener(new View.OnClickListener(){
 
@@ -145,6 +146,8 @@ public class MessionModifyActivity extends AppCompatActivity implements AdapterV
             mcomple.setEnabled(false);
             mcomple.setText("任务尚未完成");
         }
+
+        //修改任务
         mcommit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -217,6 +220,7 @@ public class MessionModifyActivity extends AppCompatActivity implements AdapterV
 
             }
         });
+        //完结任务
         mcomple.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

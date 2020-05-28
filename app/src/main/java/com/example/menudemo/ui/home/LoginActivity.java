@@ -13,6 +13,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.menudemo.MainActivity;
@@ -40,7 +41,7 @@ public class LoginActivity extends AppCompatActivity {
     private Button bt_login;
     private EditText login_username;
     private EditText login_password;
-    private Button bt_forgetpsd;
+    private TextView bt_forgetpsd;
     private Button bt_register;
 
     public UserInfo userInfo;
@@ -62,7 +63,7 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_account_login);
-
+        getSupportActionBar().hide();
 
         context = getApplicationContext();
         sp = getSharedPreferences(USERINFO , MODE_PRIVATE);
@@ -110,6 +111,8 @@ public class LoginActivity extends AppCompatActivity {
                 {
                      String  user = login_username.getText().toString().trim();
                      String psd = login_password.getText().toString().trim();
+
+
                     EMClient.getInstance().login(user, psd, new EMCallBack() {
                         @Override
                         public void onSuccess() {
