@@ -43,18 +43,20 @@ public class MessionCancelActivity extends AppCompatActivity {
     private TextView mstatus = null;
     private Button mcomple=null;
     private SharedPreferences sp;
-
+    private SharedPreferences.Editor editor;
     public String result;
+    private static  final String USERINFO = "userInfo";
    // public String CancelUrl = HttpUtillConnection.base_URL + "CancelTask";
-    public String CancelUrl = HttpUtillConnection.Ya_URL+"CancelTask";
-    public String CompleUrl = HttpUtillConnection.Ya_URL+"CompleteTask";
+    public String CancelUrl = HttpUtillConnection.gtd_URL+"CancelTask";
+    public String CompleUrl = HttpUtillConnection.gtd_URL+"CompleteTaskRequest";
     String Acceptor,Status,id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mession_cancel);
-        sp = getSharedPreferences("userInfo", MODE_PRIVATE);
+        sp = getSharedPreferences(USERINFO , MODE_PRIVATE);
+        editor = sp.edit();
         mclass = findViewById(R.id.myac_messionclass);  //任务类型
         mname = findViewById(R.id.myac_messionnname);   //任务名称
         maddress = findViewById(R.id.myac_messionaddress); //地址
@@ -103,6 +105,7 @@ public class MessionCancelActivity extends AppCompatActivity {
             mcommit.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+
 
                     Acceptor = sp.getString("id", null);
                     Status="待接受";
@@ -185,7 +188,9 @@ public class MessionCancelActivity extends AppCompatActivity {
         mcomple.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                editor.putString("wallet", String.valueOf(Integer.parseInt(sp.getString("wallet", null))+Integer.parseInt(intent.getStringExtra("messionprice"))));
+                //Toast.makeText(MessionCancelActivity.this,String.valueOf(Integer.parseInt(sp.getString("wallet", null))+Integer.parseInt(intent.getStringExtra("messionprice"))),Toast.LENGTH_SHORT).show();
+                editor.commit();
                 Acceptor = sp.getString("id", null);
                 Status="完结申请中";
                 final Map<String, String> params = new HashMap<String, String>();

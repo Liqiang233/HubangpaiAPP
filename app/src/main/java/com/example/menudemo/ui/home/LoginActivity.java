@@ -176,6 +176,7 @@ public class LoginActivity extends AppCompatActivity {
                                     try {
                                         JSONObject json = new JSONObject(key);
                                         String result = (String) json.get("result");
+                                        String wallet = (String) json.get("wallet");
                                         if ("success".equals(result)) {
 
                                             //返回成功后  将登陆的用户名保存在SharedPreferences中
@@ -183,6 +184,7 @@ public class LoginActivity extends AppCompatActivity {
                                             username = login_username.getText().toString();
                                             password = login_password.getText().toString();
                                             editor.putString("id",username);
+                                            editor.putString("wallet",wallet);
                                             editor.commit();
                                             /*userInfo.setUserInfo(USER_NAME,username);
                                             userInfo.setUserInfo(PASSWORD, password);

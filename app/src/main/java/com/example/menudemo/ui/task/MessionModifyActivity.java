@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -44,7 +45,8 @@ public class MessionModifyActivity extends AppCompatActivity implements AdapterV
     // String url=                  //@liqiang
 
 
-
+    private SharedPreferences sp;
+    private SharedPreferences.Editor editor;
     private Spinner mclass=null;
     private EditText mname=null;
     private EditText maddress=null;
@@ -65,6 +67,8 @@ public class MessionModifyActivity extends AppCompatActivity implements AdapterV
     private String status;
     private TextView mTvSelectedTime;
     private CustomDatePicker mTimerPicker;
+    private  String prepay;
+    private static  final String USERINFO = "userInfo";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -79,7 +83,8 @@ public class MessionModifyActivity extends AppCompatActivity implements AdapterV
         mdetail=findViewById(R.id.md_messiondetails);
         mcomple=findViewById(R.id.md_comple);
         mTvSelectedTime = findViewById(R.id.tv2_selected_time);
-
+        sp = getSharedPreferences(USERINFO , MODE_PRIVATE);
+        editor = sp.edit();
         //界面间传递数据
         Intent intent = getIntent();
         mname.setText(intent.getStringExtra("messionname"));
@@ -103,6 +108,7 @@ public class MessionModifyActivity extends AppCompatActivity implements AdapterV
         maddress.setText(intent.getStringExtra("messionaddress"));
         mdetail.setText(intent.getStringExtra("messiondetails"));
         mpay.setText(intent.getStringExtra("messionprice"));
+        prepay=intent.getStringExtra("messionprice");
         mdeadline=intent.getStringExtra("messiondeadline");
         status=intent.getStringExtra("messionstatus");
         id = intent.getStringExtra("messionid");
@@ -148,7 +154,8 @@ public class MessionModifyActivity extends AppCompatActivity implements AdapterV
                 Address = maddress.getText().toString();
                 Price = mpay.getText().toString();
                 Details = mdetail.getText().toString();
-
+                editor.putString("wallet", String.valueOf(Integer.parseInt(sp.getString("wallet", null))+Integer.parseInt(prepay)-Integer.parseInt(Price)));
+                editor.commit();
                 new Thread(new Runnable() {
                     @Override
                     public void run() {
@@ -218,7 +225,9 @@ public class MessionModifyActivity extends AppCompatActivity implements AdapterV
                     public void run() {
 
                         Map<String, String> params = new HashMap<String, String>();
+                        params.put("UserID", sp.getString("id", null));
                         params.put("MessionID", id);
+                        params.put("Price", intent.getStringExtra("messionprice"));
                         params.put("Status","已完结");
                         String result = HttpUtillConnection.getContextByHttp(CompleUrl, params);
                         Log.i("===========", result.toString());

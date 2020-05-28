@@ -67,6 +67,7 @@ public class PublishActivity extends AppCompatActivity implements AdapterView.On
     private TextView mTvSelectedTime;
     private CustomDatePicker mTimerPicker;
     private static  final String USERINFO = "userInfo";
+    private SharedPreferences.Editor editor;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -76,6 +77,7 @@ public class PublishActivity extends AppCompatActivity implements AdapterView.On
 
         context = getApplicationContext();
         sp = getSharedPreferences(USERINFO , MODE_PRIVATE);
+        editor = sp.edit();
         mclass=findViewById(R.id.sp_messionclass);
         mname=findViewById(R.id.tv_messionname);
         findViewById(R.id.ll_time).setOnClickListener(this);
@@ -101,7 +103,13 @@ public class PublishActivity extends AppCompatActivity implements AdapterView.On
                         mpay.getText().toString().trim().equals("")){
                     Toast.makeText(PublishActivity.this,"请填写完整信息",Toast.LENGTH_SHORT).show();
                 }
+                else if(Integer.parseInt(Price)>Integer.parseInt(sp.getString("wallet", null))){
+                    Toast.makeText(PublishActivity.this,"您的余额已不足",Toast.LENGTH_SHORT).show();
+                }
                 else{
+                    editor.putString("wallet", String.valueOf(Integer.parseInt(sp.getString("wallet", null))-Integer.parseInt(Price)));
+                    editor.commit();
+
                     new Thread(new Runnable() {
                         @Override
                         public void run() {
