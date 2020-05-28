@@ -2,6 +2,7 @@ package com.example.menudemo.ui.home;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -11,7 +12,9 @@ import com.example.menudemo.R;
 
 
 public class WalletActivity extends AppCompatActivity {
-
+    private TextView wallet;
+    private SharedPreferences sp;
+    private static  final String USERINFO = "userInfo";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,6 +26,9 @@ public class WalletActivity extends AppCompatActivity {
                 finish();
             }
         });
+        wallet=findViewById(R.id.points);
+        sp = getSharedPreferences(USERINFO , MODE_PRIVATE);
+        wallet.setText(sp.getString("wallet", null));
     }
 
 }
