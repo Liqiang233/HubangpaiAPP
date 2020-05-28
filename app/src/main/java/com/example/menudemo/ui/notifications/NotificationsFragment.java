@@ -68,9 +68,7 @@ protected  void initView()
 
                     EMConversation conversation = conversationListView.getItem(position);
                     String username = conversation.conversationId();
-                    if (username.equals(EMClient.getInstance().getCurrentUser()))
-                        Toast.makeText(getActivity(),"不能跟自己聊天", Toast.LENGTH_SHORT).show();
-                    else {
+
                         // start chat acitivity
                         Intent intent = new Intent(getActivity(), ChatActivity.class);
 
@@ -78,7 +76,7 @@ protected  void initView()
                         intent.putExtra("sendto", username);
                         startActivity(intent);
 
-                    }
+
         }
     });
 }

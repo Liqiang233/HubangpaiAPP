@@ -40,6 +40,8 @@ public class MyAcceptActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_accept);
         sp = getSharedPreferences(USERINFO , MODE_PRIVATE);
+
+
         getSupportActionBar().setTitle("接受的任务");
         new Thread(new Runnable() {
             @Override

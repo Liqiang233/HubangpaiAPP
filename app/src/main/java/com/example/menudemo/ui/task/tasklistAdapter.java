@@ -12,7 +12,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -20,8 +19,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.menudemo.R;
 import com.example.menudemo.ui.utills.Task;
+import com.hyphenate.chat.EMClient;
+import com.hyphenate.exceptions.HyphenateException;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -34,9 +34,9 @@ import java.util.regex.Pattern;
    *  version 1.0
    *
    * version2.0  计划添加搜索功能
-   * 2.0已完成
+   * 2.0完成了搜索匹配item变色功能
  */
-public class tasklistcAdapter extends RecyclerView.Adapter<tasklistcAdapter.taskviewHolder> {
+public class tasklistAdapter extends RecyclerView.Adapter<tasklistAdapter.taskviewHolder> {
 
     private Context context;
     private List<Task> taskList ;
@@ -57,7 +57,7 @@ public class tasklistcAdapter extends RecyclerView.Adapter<tasklistcAdapter.task
      * text改变的颜色
      */
     private ForegroundColorSpan span;
-    public tasklistcAdapter(Context context, List<Task> taskList){
+    public tasklistAdapter(Context context, List<Task> taskList){
         this.context=context;
         this.taskList=taskList;
     }
@@ -80,6 +80,7 @@ public class tasklistcAdapter extends RecyclerView.Adapter<tasklistcAdapter.task
                 Intent intent=new Intent(context,MessionDetailsActivity.class);
                 intent.putExtra("messionname",taskList.get(position).getMessionname());
                 intent.putExtra("messionid",taskList.get(position).getMessionid());
+                String addid = taskList.get(position).getMessionid();
                 intent.putExtra("messiontype",taskList.get(position).getMessiontype());
                 intent.putExtra("messioninitiator",taskList.get(position).getInitiator());
                 intent.putExtra("messionacceptor",taskList.get(position).getAcceptor());
@@ -89,7 +90,29 @@ public class tasklistcAdapter extends RecyclerView.Adapter<tasklistcAdapter.task
                 intent.putExtra("messiondetails",taskList.get(position).getDetails());
                 intent.putExtra("messionprice",taskList.get(position).getPrice());
                 intent.putExtra("messionstatus",taskList.get(position).getStatus());
+
+
+
+          new Thread(new Runnable() {
+              @Override
+              public void run() {
+                  try {
+                      EMClient.getInstance().contactManager().addContact(addid,"");
+                  }
+                  catch (HyphenateException e) {
+                      Log.i("huanxinaddfrienderror",e.toString());
+                      Log.i("addfrienderrorcode",e.getErrorCode()+"");
+                      e.printStackTrace();
+
+                  }
+
+              }
+          });
+
                 context.startActivity(intent);
+
+
+
             }
         });
         return holder;

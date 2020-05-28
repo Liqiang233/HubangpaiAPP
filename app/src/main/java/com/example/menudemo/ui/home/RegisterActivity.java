@@ -16,6 +16,8 @@ import com.example.menudemo.ui.utills.*;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.menudemo.R;
+import com.hyphenate.chat.EMClient;
+import com.hyphenate.exceptions.HyphenateException;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -47,7 +49,7 @@ public class RegisterActivity extends AppCompatActivity {
 
 
     private String result;
-    private String registerUrl = HttpUtillConnection.base_URL + "RegisterUser";
+    private String registerUrl = HttpUtillConnection.Ya_URL + "RegisterUser";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -154,6 +156,8 @@ public class RegisterActivity extends AppCompatActivity {
             final Map<String, String> params = new HashMap<String, String>();
             params.put("USERID",USERID);
             params.put("USERPSD",USERPSD);
+
+
             Log.i("000000000000000000","-----------");
 
             new Thread(new Runnable() {
@@ -168,6 +172,17 @@ public class RegisterActivity extends AppCompatActivity {
                         e.printStackTrace();
                         result = "网络请求失败,请稍后再试。";
                     }
+
+                    try {
+                        EMClient.getInstance().createAccount(USERID, USERPSD);
+                    }
+                    catch (HyphenateException e) {
+                        Log.i("huanxinloginerror",e.toString());
+                        Log.i("huanxinloginerrorcode",e.getErrorCode()+"");
+                        e.printStackTrace();
+                    }
+
+
 
                     //2、UI线程显示服务器的响应结果
                     Message msg = new Message();

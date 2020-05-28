@@ -13,9 +13,6 @@
         android:id="@+id/option_normal_3"
         android:title="我接受的任务"
         />
-    <item
-        android:id="@+id/option_normal_4"
-        android:title="普通菜单4"
-        />
+
 
 </menu>

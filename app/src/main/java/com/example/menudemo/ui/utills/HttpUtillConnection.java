@@ -14,22 +14,17 @@ import java.util.Map;
 
 
 /*
- * @author  Yapi
+ * @author  shijizhe
  * @note  登陆界面的逻辑设计
  * @time  2020.4.6
  * @version 1.0
  */
 public class HttpUtillConnection {
 
-
-    public static String Ya_URL="http://192.168.1.2:8080/hubangpai/";
+   //    http://39.99.227.248:8080/hubangpai/
+    //   http://192.168.1.3:8080/hubangpai/
+    public static String Ya_URL="http://39.99.227.248:8080/hubangpai/";
     public static String Qiang_URL="http://192.168.2.143:8080/hubangpai/";
-
- public static String BASE_URL = "http://192.168.2.143:8080/hubangpai/LoginUser";
- public static String BASE_URL_Task="http://192.168.2.143:8080/hubangpai/PublishTask";
- public static String base_URL = "http://192.168.2.143:8080/hubangpai/";
- public static String BASE_URL_SearchTask="http://192.168.2.143:8080/hubangpai/SearchTask";
- public static String BASE_URL_ModifyTask="http://192.168.2.143:8080/hubangpai/ModifyTask";
 
 
 

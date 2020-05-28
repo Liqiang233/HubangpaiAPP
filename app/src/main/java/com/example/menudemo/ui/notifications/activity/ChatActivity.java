@@ -59,8 +59,7 @@ public class ChatActivity extends AppCompatActivity implements EMMessageListener
     private chatAdapter adapter;
 
 
-    private SharedPreferences sp;
-    private static  final String USERINFO = "userInfo";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -211,12 +210,13 @@ public class ChatActivity extends AppCompatActivity implements EMMessageListener
                             message.setMessageStatusCallback(new EMCallBack() {
                                 @Override
                                 public void onSuccess() {
-
+                                           Log.i("huanxinsend","success");
                                 }
 
                                 @Override
                                 public void onError(int i, String s) {
 
+                                    Log.i("huanxinsend",s);
                                 }
 
                                 @Override

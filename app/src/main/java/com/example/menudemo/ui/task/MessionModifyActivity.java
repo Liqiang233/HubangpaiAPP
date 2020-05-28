@@ -39,8 +39,8 @@ public class MessionModifyActivity extends AppCompatActivity implements AdapterV
 
 
     //String url = HttpUtillConnection.BASE_URL_ModifyTask;  @Tenda
-    String url = HttpUtillConnection.gtd_URL+"ModifyTask";   //@gtd
-    public String CompleUrl = HttpUtillConnection.gtd_URL+"CompleteTask";
+    String url = HttpUtillConnection.Ya_URL+"ModifyTask";   //@gtd
+    public String CompleUrl = HttpUtillConnection.Ya_URL+"CompleteTask";
     // String url=                  //@liqiang
 
 
@@ -106,6 +106,7 @@ public class MessionModifyActivity extends AppCompatActivity implements AdapterV
         mdeadline=intent.getStringExtra("messiondeadline");
         status=intent.getStringExtra("messionstatus");
         id = intent.getStringExtra("messionid");
+        Log.i("xiugaiid",id);
         initTimerPicker();
         mTvSelectedTime.setOnClickListener(new View.OnClickListener(){
 
@@ -139,16 +140,17 @@ public class MessionModifyActivity extends AppCompatActivity implements AdapterV
             mcomple.setEnabled(false);
             mcomple.setText("任务尚未完成");
         }
+
+        //修改任务
         mcommit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 MessionName = mname.getText().toString();
                 MessionType = mclass.getSelectedItem().toString();
-                Deadline = mTvSelectedTime.getText().toString();
                 Address = maddress.getText().toString();
-                Price = mpay.getText().toString();
+                Deadline = mTvSelectedTime.getText().toString();
                 Details = mdetail.getText().toString();
-
+                Price = mpay.getText().toString();
                 new Thread(new Runnable() {
                     @Override
                     public void run() {
@@ -210,6 +212,7 @@ public class MessionModifyActivity extends AppCompatActivity implements AdapterV
 
             }
         });
+        //完结任务
         mcomple.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

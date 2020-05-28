@@ -17,7 +17,7 @@
             android:src="@mipmap/lq"
             android:layout_marginTop="100dp"/>
 
-        <EditText
+        <TextView
                 android:layout_gravity="center_horizontal"
                 android:id="@+id/my_signature"
                 android:layout_width="300dp"

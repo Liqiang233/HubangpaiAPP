@@ -2,12 +2,10 @@ package com.example.menudemo.ui.task;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.IBinder;
 import android.os.Message;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -16,27 +14,18 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.menudemo.MainActivity;
 import com.example.menudemo.R;
-import com.example.menudemo.ui.home.LoginActivity;
 import com.example.menudemo.ui.utills.HttpUtillConnection;
 import com.example.menudemo.ui.utills.Task;
 
@@ -67,7 +56,7 @@ public class TaskFragment extends Fragment{
     private ImageView mImgvDelete;
     private View view;  //定义view用来设置fragment的layout
     public RecyclerView recy;   //定义RecyclerView
-    private tasklistcAdapter taskAdapter;  //定义自己创建的Adapter
+    private tasklistAdapter taskAdapter;  //定义自己创建的Adapter
     public List<Task> taskList=new ArrayList<>();   //定义全部实体类
     public List<Task> list=new ArrayList<>();   ////定义符合搜索条件的数据
     private SharedPreferences sp;
@@ -167,7 +156,7 @@ public class TaskFragment extends Fragment{
                                 Log.i("zhutaskList:",taskList.toString());
 
                                 //初始化adapter
-                                taskAdapter = new tasklistcAdapter(getActivity(),list);
+                                taskAdapter = new tasklistAdapter(getActivity(),list);
                                 //set adapter
                                 recy.setAdapter(taskAdapter);
                                 //设置layoutManager,可以设置显示效果，是线性布局、grid布局，还是瀑布流布局
@@ -265,7 +254,7 @@ public class TaskFragment extends Fragment{
     private void refreshUI() {
         if (taskAdapter == null) {
             //初始化adapter
-            taskAdapter = new tasklistcAdapter(getActivity(),list);
+            taskAdapter = new tasklistAdapter(getActivity(),list);
             //set adapter
             recy.setAdapter(taskAdapter);
             //设置layoutManager,可以设置显示效果，是线性布局、grid布局，还是瀑布流布局
@@ -282,7 +271,6 @@ public class TaskFragment extends Fragment{
     //展示actionbar的菜单按钮
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
 
-        // TODO Add your menu entries here
         super.onCreateOptionsMenu(menu, inflater);
         inflater.inflate(R.menu.top_task_menu,menu);
     }
@@ -301,8 +289,6 @@ public class TaskFragment extends Fragment{
             case R.id.option_normal_3:
                 intent = new Intent(getActivity(),MyAcceptActivity.class);
                 startActivity(intent);
-                return true;
-            case R.id.option_normal_4:
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

@@ -39,7 +39,7 @@ import java.util.Map;
 
 public class HomeFragment extends Fragment {
 
-    private EditText SignText;
+    private TextView SignText;
     private String Sign;
     private String USERID;
     public  String url = HttpUtillConnection.Ya_URL+"ChangeSign";
@@ -133,8 +133,6 @@ public class HomeFragment extends Fragment {
         bt_wallet.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                //跳转到钱包页面
 
                 //跳转到钱包页面
 

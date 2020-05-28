@@ -55,11 +55,12 @@ public class ECApplication extends Application {
         options.setAutoLogin(true);
         // 设置是否需要发送已读回执
         options.setRequireAck(true);
-        // 设置是否需要发送回执，TODO 这个暂时有bug，上层收不到发送回执
+        // 设置是否需要发送回执
         options.setRequireDeliveryAck(true);
         // 设置是否需要服务器收到消息确认
 //        options.setRequireServerAck(true);
         // 收到好友申请是否自动同意，如果是自动同意就不会收到好友请求的回调，因为sdk会自动处理，默认为true
+        //考虑到未开发添加好友界面，互帮派app收到好友请求默认自动同意
         options.setAcceptInvitationAlways(true);
         // 设置是否自动接收加群邀请，如果设置了当收到群邀请会自动同意加入
         options.setAutoAcceptGroupInvitation(false);
